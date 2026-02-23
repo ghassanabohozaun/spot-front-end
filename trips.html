@@ -15,6 +15,18 @@
 </head>
 
 <body class="bg-light">
+    <div id="noqat-preloader">
+        <div class="loader-content">
+            <div class="luxury-orbit-spinner">
+                <div class="orbit"></div>
+                <div class="orbit"></div>
+                <div class="orbit"></div>
+                <div class="center-point"></div>
+            </div>
+            <div class="loader-tagline">Loading Experience...</div>
+        </div>
+    </div>
+
     <div class="container-fluid bg-white p-0">
         <div class="row justify-content-center m-0">
             <div class="col-12 col-lg-10 p-0 position-relative shadow-sm">
@@ -155,7 +167,6 @@
                                 </aside>
 
                                 <div class="col-lg-9">
-
                                     <div class="bg-white rounded-4 shadow-sm p-2 mb-4 category-navbar">
                                         <div class="d-flex flex-wrap justify-content-start gap-2">
                                             <button class="btn category-tab active">الكل</button>
@@ -170,272 +181,265 @@
                                         </div>
                                     </div>
 
-                                    <div class="row g-4 text-start" id="tours-grid">
+                                    <div class="row g-4" id="tours-grid">
 
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container">
+                                                    <img
                                                         src="https://images.unsplash.com/photo-1547448415-e9f5b28e570d?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Riyadh"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>الرياض</span>
-                                                        <span class="text-muted small">4 أيام / 3 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            الرياض</div>
+                                                        <div class="spot-duration-text">4 أيام / 3 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الداخلية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">15300</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            الرحلات الداخلية</div>
+                                                        <div class="spot-price-text">15300 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">(عرض الصيف) منتجع موفنبيك</h6>
-                                                    <p class="text-muted small mb-4 card-description">يضم منتجع موفنبيك
-                                                        5 شواطئ خاصة، ويحتوي أيضًا على مسبح لا متناهي فاخر.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">منتجع موفنيبيك نعمه باي
+                                                    </h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">يضم منتجع موفنيبيك 5
+                                                        شواطئ خاصة، ويحتوي أيضاً على مسبح لا متناهي فاخر.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Dubai"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>دبي</span>
-                                                        <span class="text-muted small">5 أيام / 4 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            دبي</div>
+                                                        <div class="spot-duration-text">5 أيام / 4 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">21000</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            الرحلات الخارجية</div>
+                                                        <div class="spot-price-text">21000 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">فندق أتلانتس النخلة دبي</h6>
-                                                    <p class="text-muted small mb-4 card-description">استمتع بالرفاهية
-                                                        المطلقة في قلب نخلة جميرا مع دخول مجاني للمدينة المائية.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">فندق أتلانتس النخلة</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استمتع بالرفاهية المطلقة
+                                                        في قلب نخلة جميرا مع دخول مجاني للمدينة المائية.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Maldives"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>المالديف</span>
-                                                        <span class="text-muted small">7 أيام / 6 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            المالديف</div>
+                                                        <div class="spot-duration-text">7 أيام / 6 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">32500</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i> شهر
+                                                            العسل</div>
+                                                        <div class="spot-price-text">32500 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">منتجع جزيرة كوراماتي</h6>
-                                                    <p class="text-muted small mb-4 card-description">استرخاء تام في
-                                                        مياه المالديف الفيروزية مع وجبات شاملة وخدمات خاصة.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">منتجع جزيرة كوراماتي</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استرخاء تام في مياه
+                                                        المالديف الفيروزية مع وجبات شاملة وخدمات خاصة.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Istanbul"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>إسطنبول</span>
-                                                        <span class="text-muted small">6 أيام / 5 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            إسطنبول</div>
+                                                        <div class="spot-duration-text">6 أيام / 5 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">12400</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            جولات تاريخية</div>
+                                                        <div class="spot-price-text">12400 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">جولة في إسطنبول التاريخية</h6>
-                                                    <p class="text-muted small mb-4 card-description">زيارة لأهم
-                                                        المعالم التاريخية والأسواق الشعبية في قلب تركيا الساحرة.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">سحر إسطنبول التاريخي</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">زيارة لأهم المعالم
+                                                        التاريخية والأسواق الشعبية في قلب تركيا الساحرة.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Abha"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>أبها</span>
-                                                        <span class="text-muted small">3 أيام / 2 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            أبها</div>
+                                                        <div class="spot-duration-text">3 أيام / 2 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الداخلية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">4500</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            سياحة جبلية</div>
+                                                        <div class="spot-price-text">4500 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">مرتفعات السودة وأبها</h6>
-                                                    <p class="text-muted small mb-4 card-description">استمتع بالأجواء
-                                                        الضبابية والمناظر الجبلية الخلابة في عسير.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">مرتفعات السودة وأبها</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استمتع بالأجواء الضبابية
+                                                        والمناظر الجبلية الخلابة في أحضان منطقة عسير.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1534008897995-27a23e859048?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="Phuket"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>بوكيت</span>
-                                                        <span class="text-muted small">8 أيام / 7 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            بوكيت</div>
+                                                        <div class="spot-duration-text">8 أيام / 7 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">9500</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            رحلات ترفيهية</div>
+                                                        <div class="spot-price-text">9500 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">جزر تايلاند الاستوائية</h6>
-                                                    <p class="text-muted small mb-4 card-description">مغامرة بحرية تشمل
-                                                        زيارة أجمل الجزر والأنشطة المائية المتنوعة.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">جزر تايلاند الاستوائية
+                                                    </h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">مغامرة بحرية تشمل زيارة
+                                                        أجمل الجزر والأنشطة المائية الممتعة.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-6 col-xl-4 tour-card-item d-none extra-tour">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
+                                        <div class="col-lg-4 col-md-6 tour-card-item d-none extra-tour">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
                                                         src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
+                                                        alt="AlUla"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
                                                     <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>العلا</span>
-                                                        <span class="text-muted small">3 أيام / 2 ليالي</span>
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            العلا</div>
+                                                        <div class="spot-duration-text">3 أيام / 2 ليالي</div>
                                                     </div>
                                                     <div
                                                         class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الداخلية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">8900</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            تاريخ وأصالة</div>
+                                                        <div class="spot-price-text">8900 <span
+                                                                class="spot-curr">ر.س</span></div>
                                                     </div>
-                                                    <h6 class="fw-bold text-navy mb-2">مدائن صالح والتاريخ</h6>
-                                                    <p class="text-muted small mb-4 card-description">استكشف عبق
-                                                        التاريخ وعظمة الحضارات القديمة في قلب صحراء العلا.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
+                                                    <h5 class="spot-tour-title fw-bold mb-2">مدائن صالح والتاريخ</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استكشف عظمة الحضارات
+                                                        القديمة في قلب صحراء العلا الساحرة.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
                                                         المزيد</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item d-none extra-tour">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
-                                                        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>بالي</span>
-                                                        <span class="text-muted small">6 أيام / 5 ليالي</span>
-                                                    </div>
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">7200</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
-                                                    </div>
-                                                    <h6 class="fw-bold text-navy mb-2">رحلة غابات بالي</h6>
-                                                    <p class="text-muted small mb-4 card-description">استمتع بجمال
-                                                        الطبيعة والمساحات الخضراء الشاسعة في بالي.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
-                                                        المزيد</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xl-4 tour-card-item d-none extra-tour">
-                                            <div class="card tour-item-card border-0 shadow-sm h-100">
-                                                <div class="card-img-wrapper"><img
-                                                        src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600"
-                                                        class="card-img-top" alt="Tour"></div>
-                                                <div class="card-body p-4">
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="info-tag"><i
-                                                                class="bi bi-geo-alt-fill text-gold ms-1"></i>باريس</span>
-                                                        <span class="text-muted small">5 أيام / 4 ليالي</span>
-                                                    </div>
-                                                    <div
-                                                        class="d-flex justify-content-between align-items-center mb-3">
-                                                        <span class="category-tag"><i
-                                                                class="bi bi-grid-fill text-gold ms-1"></i>الرحلات
-                                                            الخارجية</span>
-                                                        <div class="price-tag"><span
-                                                                class="fs-4 fw-bold text-gold">18500</span> <small
-                                                                class="text-muted fw-bold">ر.س</small></div>
-                                                    </div>
-                                                    <h6 class="fw-bold text-navy mb-2">باريس مدينة الأنوار</h6>
-                                                    <p class="text-muted small mb-4 card-description">جولة رومانسية
-                                                        تشمل زيارة برج إيفل ومتحف اللوفر الشهير.</p>
-                                                    <a href="#" class="btn btn-card-more w-100 py-2">عرض
-                                                        المزيد</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 tour-card-item d-none extra-tour">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
+                                                        src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600"
+                                                        alt="Abha"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            أبها</div>
+                                                        <div class="spot-duration-text">3 أيام / 2 ليالي</div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-3">
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            سياحة جبلية</div>
+                                                        <div class="spot-price-text">4500 <span
+                                                                class="spot-curr">ر.س</span></div>
+                                                    </div>
+                                                    <h5 class="spot-tour-title fw-bold mb-2">مرتفعات السودة وأبها</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استمتع بالأجواء الضبابية
+                                                        والمناظر الجبلية الخلابة في أحضان منطقة عسير.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
+                                                        المزيد</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 tour-card-item d-none extra-tour">
+                                            <div class="spot-tour-card h-100 d-flex flex-column shadow-sm">
+                                                <div class="spot-img-box img-shine-container"><img
+                                                        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600"
+                                                        alt="AlUla"></div>
+                                                <div class="spot-card-content p-4 d-flex flex-column flex-grow-1">
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-2">
+                                                        <div class="spot-meta-tag"><i class="bi bi-geo-alt-fill"></i>
+                                                            العلا</div>
+                                                        <div class="spot-duration-text">3 أيام / 2 ليالي</div>
+                                                    </div>
+                                                    <div
+                                                        class="d-flex justify-content-between align-items-center mb-3">
+                                                        <div class="spot-meta-tag"><i class="bi bi-grid-fill"></i>
+                                                            تاريخ وأصالة</div>
+                                                        <div class="spot-price-text">8900 <span
+                                                                class="spot-curr">ر.س</span></div>
+                                                    </div>
+                                                    <h5 class="spot-tour-title fw-bold mb-2">مدائن صالح والتاريخ</h5>
+                                                    <p class="spot-tour-desc text-muted mb-4">استكشف عظمة الحضارات
+                                                        القديمة في قلب صحراء العلا الساحرة.</p>
+                                                    <a href="trip-details.html" class="spot-btn-more mt-auto">عرض
+                                                        المزيد</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                     <div class="text-center mt-5" id="load-more-container">
                                         <button class="btn btn-load-more px-5 py-2 fw-bold" id="btn-load-more">
                                             <span>عرض المزيد</span>
@@ -452,8 +456,8 @@
 
 
 
-                <section class="py-5 newsletter-section">
-                    <div class="container pt-5">
+                <section class="py-3 newsletter-section">
+                    <div class="container pt-3">
                         <div class="row align-items-center justify-content-between g-4">
 
                             <div class="col-lg-6 text-start">
@@ -546,6 +550,19 @@
         </div>
     </div>
 
+
+     <div class="luxury-scroll-top" id="masterScrollTop">
+        <div class="button-glow"></div>
+
+        <svg class="progress-ring" width="60" height="60">
+            <circle class="progress-ring__circle" stroke="#dda53b" stroke-width="3" fill="transparent" r="26"
+                cx="30" cy="30" />
+        </svg>
+
+        <div class="icon-box">
+            <i class="bi bi-rocket-takeoff-fill"></i>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
