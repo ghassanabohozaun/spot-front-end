@@ -6,6 +6,8 @@
 
 body { font-family: 'Cairo', sans-serif; overflow-x: hidden; text-align: right; }
 
+
+
 /* --- Navbar --- */
 .navbar { transition: all 0.3s ease; z-index: 1020; }
 .logo-cls-1 { fill: var(--brand-navy); }
@@ -377,55 +379,404 @@ border-color: #e2e6ea !important;
 }
 
 /* ==========================================
-   Section 7: Contact & Map Section Styles
-   ========================================== */
+Section 7: Contact & Map Section Styles
+========================================== */
 
 /* Matches the background color of Section 6 */
-.contact-section { 
-    background-color: #f8f9fa; 
+.contact-section {
+background-color: #f8f9fa;
 }
 
-.contact-desc { 
-    font-size: 0.95rem; 
-    line-height: 1.8; 
+.contact-desc {
+font-size: 0.95rem;
+line-height: 1.8;
 }
 
 /* Gray Circular Background for Icons */
 .contact-icon-box {
-    width: 45px;
-    height: 45px;
-    background-color: #f1f4f8; 
-    color: var(--brand-navy);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+width: 45px;
+height: 45px;
+background-color: #f1f4f8;
+color: var(--brand-navy);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.2rem;
 }
 
 /* Typography for Contact Items */
-.contact-title { 
-    color: var(--brand-navy); 
-    font-size: 0.95rem; 
-    margin-bottom: 0.2rem; 
+.contact-title {
+color: var(--brand-navy);
+font-size: 0.95rem;
+margin-bottom: 0.2rem;
 }
 
-.contact-text { 
-    font-size: 0.85rem; 
-    line-height: 1.6; 
+.contact-text {
+font-size: 0.85rem;
+line-height: 1.6;
 }
 
 /* Map Wrapper to ensure rounded corners and hide overflow */
 .map-wrapper {
-    border-radius: 1rem;
-    overflow: hidden; 
-    background-color: #f1f4f8; 
+border-radius: 1rem;
+overflow: hidden;
+background-color: #f1f4f8;
 }
 
 /* Responsive styling for the iframe map */
 .contact-map {
-    width: 100%; 
-    height: 400px; 
-    border: 0; 
-    display: block; 
+width: 100%;
+height: 400px;
+border: 0;
+display: block;
 }
+
+/* ==========================================
+Section 8: Newsletter Section Styles
+========================================== */
+
+.newsletter-section {
+background-color: #ffffff;
+}
+
+/* Typography */
+.newsletter-title {
+font-size: 1.8rem;
+letter-spacing: -0.5px;
+}
+
+.newsletter-desc {
+font-size: 0.95rem;
+line-height: 1.6;
+max-width: 600px;
+}
+
+/* Form Group Wrapper */
+.newsletter-form-group {
+border: 1px solid #e0e4e8;
+border-radius: 10px;
+transition: all 0.3s ease;
+}
+
+/* Add a subtle gold glow when typing in the input */
+.newsletter-form-group:focus-within {
+border-color: var(--brand-gold);
+box-shadow: 0 0 0 0.2rem rgba(212, 163, 77, 0.15) !important;
+}
+
+/* Input Field Styling */
+.newsletter-input {
+background-color: transparent;
+font-size: 0.95rem;
+padding-right: 15px; /* Space from the right edge in RTL */
+color: var(--brand-navy);
+}
+
+.newsletter-input::placeholder {
+color: #aeb5bc;
+}
+
+/* Gold Subscription Button */
+.newsletter-btn {
+background-color: var(--brand-gold);
+color: #ffffff;
+font-weight: 700;
+padding: 10px 25px;
+border-radius: 8px; /* Slightly less than the wrapper to fit inside perfectly */
+transition: background-color 0.3s ease;
+border: none;
+}
+
+.newsletter-btn:hover {
+background-color: #b5893d; /* Darker gold on hover */
+color: #ffffff;
+}
+
+/* Flip the send icon so it points to the left/up for RTL */
+.rtl-flip-icon {
+transform: scaleX(-1);
+display: inline-block;
+}
+
+/* ==========================================
+Section 9: Footer Styles
+========================================== */
+
+/* Main Background matching previous sections */
+.footer-top {
+background-color: #f8f9fa;
+}
+
+/* Footer Typography & Spacing */
+.footer-title {
+font-size: 1.1rem;
+}
+
+.footer-support-desc {
+line-height: 1.8;
+}
+
+/* Links Styling */
+.footer-links li {
+margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+color: #888; /* Muted text color */
+text-decoration: none;
+font-size: 0.95rem;
+transition: color 0.3s ease, transform 0.3s ease;
+display: inline-block;
+}
+
+.footer-links a:hover {
+color: var(--brand-gold);
+transform: translateX(-5px); /* Gentle slide to the left on hover for RTL */
+}
+
+/* Technical Support Button (Teal Outline) */
+.btn-support {
+border: 1px solid #1c7a76;
+color: #1c7a76;
+background-color: transparent;
+padding: 10px 20px;
+border-radius: 6px;
+font-weight: 600;
+transition: all 0.3s ease;
+}
+
+.btn-support:hover {
+background-color: #1c7a76;
+color: #ffffff;
+}
+
+.btn-support i {
+font-size: 1.2rem;
+}
+
+/* Social Media Icons Styling */
+.social-icon {
+width: 35px;
+height: 35px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #ffffff;
+font-size: 1rem;
+text-decoration: none;
+transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icon:hover {
+transform: translateY(-3px);
+opacity: 0.85;
+color: #ffffff;
+}
+
+/* Brand Colors for Social Icons */
+.social-tw {
+background-color: #1da1f2;
+}
+
+.social-ig {
+background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-fb {
+background-color: #3b5998;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+background-color: #ffffff;
+}
+
+.copyright-text {
+font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   TOURS PAGE: MASTER STYLES (Filters & Detailed Grid)
+   ========================================================================== */
+
+/* 1. LAYOUT & BACKGROUND
+   Ensures the light grey background is applied to the entire section
+   -------------------------------------------------------------------------- */
+.tours-results-bg {
+    background-color: #f8f9fa;
+}
+
+/* 2. SIDEBAR FILTER (RIGHT SIDE)
+   Handles the sticky sidebar and the Dual Range Slider logic
+   -------------------------------------------------------------------------- */
+.sticky-top-filter {
+    position: sticky;
+    top: 110px;
+    z-index: 10;
+}
+
+.filter-card {
+    border: none !important;
+    border-radius: 20px !important;
+}
+
+/* Dual Range Slider Components */
+.range-slider {
+    height: 5px;
+    position: relative;
+    background: #f1f4f8;
+    border-radius: 5px;
+}
+
+.range-selected {
+    height: 100%;
+    position: absolute;
+    background: var(--brand-gold); /* */
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.range-slider input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: 0;
+    left: 0;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    z-index: 2;
+}
+
+.range-slider input::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 3px solid var(--brand-gold);
+    pointer-events: auto;
+    -webkit-appearance: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.price-box {
+    background-color: #f4f6f9;
+    padding: 10px;
+    border-radius: 10px;
+    width: 48%;
+    text-align: center;
+}
+
+/* 3. CATEGORY NAVIGATION (LEFT SIDE CONTENT)
+   White rounded bar positioned directly above the tour cards
+   -------------------------------------------------------------------------- */
+.category-navbar {
+    border: 1px solid #f1f4f8;
+}
+
+.category-tab {
+    background-color: #f8f9fa;
+    color: var(--brand-navy);
+    border: none;
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-tab:hover:not(.active) {
+    background-color: #ffffff;
+    color: var(--brand-gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.category-tab.active {
+    background-color: var(--brand-gold) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(212, 163, 77, 0.25);
+}
+
+/* 4. DETAILED TOUR CARDS (LEFT SIDE CONTENT)
+   Full details grid matching image 11.jpg
+   -------------------------------------------------------------------------- */
+.tour-item-card {
+    border-radius: 20px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none !important;
+    overflow: hidden;
+}
+
+.tour-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08) !important;
+}
+
+/* Content Alignment (RTL) */
+.tour-item-card .card-body {
+    direction: rtl; /* */
+    text-align: right;
+}
+
+.card-img-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tags & Badges distribution */
+.info-tag, .category-tag {
+    background: #f8f9fa;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--brand-navy);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-tag {
+    background: #f1f4f8;
+    font-weight: 700;
+}
+
+.card-description {
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits text to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* 5. FOOTER ACTIONS
+   Custom styling for "Load More" button with Navy hover
+   -------------------------------------------------------------------------- */
+.btn-load-more {
+    background-color: #f4f6f9;
+    color: #888888;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.btn-load-more:hover {
+    background-color: var(--brand-navy) !important;
+    color: #ffffff !important;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+

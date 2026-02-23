@@ -44,3 +44,128 @@ var internationalSwiper = new Swiper(".internationalSwiper", {
     1400: { slidesPerView: 5 },
   },
 });
+
+/**
+ * TOURS & LISTING PAGE MODULES
+ * Organized for Laravel compatibility and reusability
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Initialize Dual Range Slider
+  initPriceSlider();
+
+  // 2. Initialize Load More functionality
+  initLoadMore();
+
+  // 3. Initialize Category Tabs
+  initCategoryTabs();
+});
+
+/* ==========================================================================
+   1. DUAL RANGE SLIDER LOGIC
+   Works for any page with .range-slider container
+   ========================================================================== */
+function initPriceSlider() {
+  const sliderContainer = document.querySelector(".range-slider");
+
+  // Check if element exists to prevent errors on other pages
+  if (!sliderContainer) return;
+
+  const rangeInputs = sliderContainer.querySelectorAll("input[type='range']"),
+    minLabel = document.getElementById("min-price-val"),
+    maxLabel = document.getElementById("max-price-val"),
+    progress = sliderContainer.querySelector(".range-selected");
+
+  function updateSlider() {
+    let v1 = parseInt(rangeInputs[0].value);
+    let v2 = parseInt(rangeInputs[1].value);
+
+    // Identify Min and Max
+    let minVal = Math.min(v1, v2);
+    let maxVal = Math.max(v1, v2);
+
+    // Update UI Text
+    if (minLabel) minLabel.textContent = minVal;
+    if (maxLabel) maxLabel.textContent = maxVal;
+
+    // RTL Progress Calculation
+    const maxRange = rangeInputs[0].max;
+    const minPercent = (minVal / maxRange) * 100;
+    const maxPercent = (maxVal / maxRange) * 100;
+
+    // Apply styles to the golden track
+    if (progress) {
+      progress.style.right = minPercent + "%";
+      progress.style.left = 100 - maxPercent + "%";
+    }
+  }
+
+  rangeInputs.forEach((input) => {
+    input.addEventListener("input", updateSlider);
+  });
+
+  // Run once on initialization
+  updateSlider();
+}
+
+/* ==========================================================================
+   2. LOAD MORE CARDS LOGIC
+   Handles revealing hidden batches of cards
+   ========================================================================== */
+function initLoadMore() {
+  const loadMoreBtn = document.getElementById("btn-load-more");
+  const batchSize = 3;
+
+  if (!loadMoreBtn) return;
+
+  loadMoreBtn.addEventListener("click", function () {
+    // Targets elements marked as hidden in Laravel/Blade
+    const hiddenCards = document.querySelectorAll(".tour-card-item.d-none");
+
+    for (let i = 0; i < batchSize; i++) {
+      if (hiddenCards[i]) {
+        hiddenCards[i].classList.remove("d-none");
+
+        // Professional Fade-in Animation
+        hiddenCards[i].style.opacity = "0";
+        hiddenCards[i].style.transform = "translateY(15px)";
+
+        setTimeout(() => {
+          hiddenCards[i].style.transition =
+            "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)";
+          hiddenCards[i].style.opacity = "1";
+          hiddenCards[i].style.transform = "translateY(0)";
+        }, i * 120);
+      }
+    }
+
+    // Auto-hide button if no more items are left
+    if (document.querySelectorAll(".tour-card-item.d-none").length === 0) {
+      const container = document.getElementById("load-more-container");
+      if (container) container.style.display = "none";
+    }
+  });
+}
+
+/* ==========================================================================
+   3. CATEGORY TABS INTERACTION
+   Handles active state switching for filter tabs
+   ========================================================================== */
+function initCategoryTabs() {
+  const tabs = document.querySelectorAll(".category-tab");
+
+  if (tabs.length === 0) return;
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+      // Remove active class from siblings
+      tabs.forEach((t) => t.classList.remove("active"));
+
+      // Add active class to current tab
+      this.classList.add("active");
+
+      // Note: Add your filtering logic or Ajax call here for Laravel
+      console.log("Selected Category: " + this.textContent.trim());
+    });
+  });
+}
