@@ -1,0 +1,281 @@
+:root {
+    --brand-navy: #1b3651;
+    --brand-gold: #d4a34d;
+    --text-muted: #888;
+}
+
+body { font-family: 'Cairo', sans-serif; overflow-x: hidden; text-align: right; }
+
+/* --- Navbar --- */
+.navbar { transition: all 0.3s ease; z-index: 1020; }
+.logo-cls-1 { fill: var(--brand-navy); }
+.logo-cls-2 { fill: var(--brand-gold); }
+.logo-cls-3 { font-family: 'Cairo', sans-serif; font-weight: 700; }
+.logo-cls-4 { font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; }
+
+.navbar-nav .nav-link { color: var(--brand-navy); font-weight: 600; font-size: 0.95rem; margin: 0 5px; }
+.navbar-nav .nav-link i { color: var(--brand-gold); margin-left: 4px; }
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--brand-gold); }
+.btn-gold { background-color: var(--brand-gold); color: #fff; border-radius: 8px; font-weight: 700; transition: 0.3s; border: none; }
+.btn-gold:hover { background-color: #b5893d; color: #fff; }
+.lang-badge { border: 1px solid #e0e0e0; border-radius: 20px; padding: 5px 12px; font-size: 0.85rem; color: var(--brand-navy); font-weight: 600; display: inline-flex; align-items: center; text-decoration: none; }
+.dropdown-menu { text-align: right; }
+.dropdown-item { text-align: right; font-weight: 600; color: var(--brand-navy); }
+.dropdown-item:hover { background-color: #f8f9fa; color: var(--brand-gold); }
+
+/* --- Hero Slider --- */
+.hero-section { height: 80vh; min-height: 500px; position: relative; } /* تم تعديل الارتفاع ليتناسب مع الحاوية */
+.carousel, .carousel-inner, .carousel-item { height: 100%; }
+.carousel-item { background-size: cover; background-position: center; }
+.hero-overlay { background-color: rgba(27, 54, 81, 0.5); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.carousel-indicators [data-bs-target] { background-color: var(--brand-gold); width: 12px; height: 12px; border-radius: 50%; border: none; margin: 0 5px; }
+
+/* --- Search Bar --- */
+.search-container { 
+    position: absolute; 
+    bottom: -40px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 10; 
+    width: 95%; /* نسبة مئوية ليتجاوب داخل الـ col-10 */
+    max-width: 900px; 
+}
+
+.search-box { 
+    background: #ffffff; 
+    border-radius: 12px; 
+    padding: 12px; 
+    border: 1px solid #eaeaea; 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08); 
+}
+
+.search-input { font-size: 1.1rem; color: #555; }
+.search-input:focus { box-shadow: none; border-color: transparent; }
+
+.btn-navy-search { 
+    background-color: var(--brand-navy); 
+    color: #ffffff; 
+    border-radius: 8px; 
+    padding: 14px 60px; 
+    font-weight: 700; 
+    font-size: 1.1rem;
+    transition: 0.3s; 
+    border: none;
+}
+.btn-navy-search:hover { background-color: #12253a; color: #fff; }
+
+/* --- Services Section --- */
+.services-section { background-color: #ffffff; padding: 80px 0 40px; }
+.service-card { background: transparent; border: none; transition: 0.4s ease; border-radius: 15px; padding: 15px 5px; }
+.service-card:hover { transform: translateY(-10px); background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
+.icon-circle { width: 100px; height: 100px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f8f9fa; transition: 0.3s; }
+.service-card:hover .icon-circle { box-shadow: 0 10px 25px rgba(212, 163, 77, 0.2); border-color: #fff; }
+.service-title { color: var(--brand-navy); font-weight: 700; font-size: 1.1rem; margin-bottom: 12px; }
+.service-text { color: var(--text-muted); font-size: 0.8rem; line-height: 1.8; margin-bottom: 15px; min-height: 65px; }
+.view-all-link { color: var(--brand-gold); text-decoration: none; font-weight: 600; font-size: 0.9rem; border-bottom: 2px solid transparent; padding-bottom: 2px; transition: 0.3s; }
+.view-all-link:hover { color: var(--brand-navy); border-bottom-color: var(--brand-navy); }
+
+/* --- Destinations Section --- */
+.dest-card { border: none; border-radius: 16px; overflow: hidden; transition: 0.3s; }
+.dest-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08) !important; }
+.dest-img { height: 220px; object-fit: cover; width: 100%; transition: 0.5s; }
+.dest-card:hover .dest-img { transform: scale(1.05); }
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+    .navbar-collapse { background: white; padding: 20px; border-radius: 12px; margin-top: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+    .search-container { bottom: -70px; }
+}
+@media (max-width: 768px) {
+    .search-container { position: relative; transform: none; bottom: auto; left: auto; margin-top: -40px; }
+    .hero-section { height: 70vh; }
+    .btn-navy-search { width: 100%; }
+    .services-section { padding-top: 20px; }
+}
+
+/* New logo formatting to be responsive */
+.main-logo {
+    height: 65px; /* Suitable height for large screens */
+    width: auto;  /* Maintains original image proportions */
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+/* Adjust logo size for small screens (Mobile) */
+@media (max-width: 768px) {
+    .main-logo {
+        height: 50px; /* Shrinks logo slightly for mobile space */
+    }
+}
+
+/* --- Destinations Section Adjustments --- */
+.bg-gold { background-color: var(--brand-gold) !important; }
+
+.dest-card {
+    border-radius: 16px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.dest-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.1) !important;
+}
+
+.btn-outline-navy {
+    border: 2px solid var(--brand-navy);
+    color: var(--brand-navy);
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.btn-outline-navy:hover {
+    background-color: var(--brand-navy);
+    color: #fff;
+}
+
+.dest-img {
+    height: 240px;
+    object-fit: cover;
+    width: 100%;
+}
+
+ 
+/* --- International Destinations Slider Styles --- */
+
+.custom-nav-btn {
+    background-color: #ffffff !important;
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    color: var(--brand-navy) !important;
+    z-index: 100 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition curve */
+    border: none !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    top: 50% !important;
+    transform: translateY(-50%); /* Centered vertically by default */
+}
+
+.custom-nav-btn:hover {
+    background-color: var(--brand-gold) !important;
+    color: white !important;
+    /* Reduced upward movement from -50% to -55% for a subtle lift */
+    transform: translateY(-55%) scale(1.08); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+}
+
+.custom-nav-btn::after {
+    font-size: 1.2rem !important; /* Slightly adjusted for better balance */
+    font-weight: bold;
+}
+
+/* Positioning buttons inside the slider boundaries */
+.swiper-button-prev { left: 15px !important; }
+.swiper-button-next { right: 15px !important; }
+
+/* --- Equal Height Card Styles --- */
+.internationalSwiper .swiper-slide {
+    height: auto; /* Required for Swiper auto-height consistency */
+    display: flex;
+}
+
+.internationalSwiper .dest-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    background: #fff;
+}
+
+.internationalSwiper .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes the body fill the available space */
+}
+
+.internationalSwiper .card-title {
+    min-height: 3rem; /* Ensures consistent title space even if empty */
+}
+
+.internationalSwiper .text-muted.small {
+    flex-grow: 1; /* Pushes the price and button to the bottom */
+    margin-bottom: 1rem;
+}
+
+.internationalSwiper .dest-card:hover {
+    transform: translateY(-5px);
+}
+
+ 
+
+/* ==========================================
+   Section 6: Booking Panel Custom Styles 
+   ========================================== */
+
+/* Button Color (Slate/Navyish Gray) */
+.btn-slate {
+    background-color: #5b6978; /* Matches the image button color */
+    color: #ffffff;
+    transition: 0.3s ease;
+    border: none;
+}
+.btn-slate:hover {
+    background-color: var(--brand-navy);
+    color: #ffffff;
+}
+
+/* Dashed Dividers for Statistics (RTL Adjusted) */
+.stat-divider {
+    position: relative;
+}
+@media (min-width: 768px) {
+    .stat-divider::after {
+        content: '';
+        position: absolute;
+        left: 0; /* Left side border because content is flowing right-to-left */
+        top: 15%;
+        height: 70%;
+        border-left: 2px dashed #e9ecef;
+    }
+}
+
+/* Timeline specific styles */
+.timeline-container {
+    min-width: 160px;
+}
+.timeline-line {
+    position: absolute;
+    top: 35%; /* Centers line behind the badge */
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    border-top: 2px dashed #d4a34d; /* Gold dashed line */
+    z-index: 0;
+}
+.timeline-line::before, .timeline-line::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--brand-gold);
+    border-radius: 50%;
+    top: -5px;
+}
+.timeline-line::before { left: -5px; } /* Dot on the left */
+.timeline-line::after { right: -5px; } /* Dot on the right */
+
+.bg-gold-light {
+    background-color: rgba(212, 163, 77, 0.15) !important;
+}
+
+/* Dashed vertical borders inside the ticket details */
+@media (min-width: 1200px) {
+    .border-end-custom {
+        border-left: 2px dashed #dee2e6 !important; /* using border-left for RTL */
+    }
+}
