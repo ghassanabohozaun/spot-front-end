@@ -706,9 +706,16 @@ font-size: 0.85rem;
 
 
 /*** trip details ***/
+
 /* =========================================================
    TRIP DETAILS COMPONENT STYLES (Fixed Swiper & Layout)
    ========================================================= */
+
+   main {
+    background-color: #f8f9fa; /* Soft light gray color matching the image */
+    min-height: 100vh;         /* Ensures the background covers the full screen height */
+    padding-bottom: 3rem;      /* Adds breathing room at the bottom */
+}
 
 .fw-800 { font-weight: 800; }
 .text-navy { color: var(--brand-navy) !important; }
@@ -737,18 +744,48 @@ font-size: 0.85rem;
 }
 .services-grid-container::-webkit-scrollbar { display: none; }
 
+/* =========================================================
+   SERVICE ITEM STYLES (With Background & Hover Animation)
+   ========================================================= */
+
 .service-item {
-    font-size: 0.8rem;
-    color: #666; 
+    background-color: #f8f9fa; /* Very light elegant background matching the design */
+    padding: 12px 15px;        /* Comfortable inner padding */
+    border-radius: 12px;       /* Smooth rounded corners */
+    font-size: 0.85rem;        /* Appropriate font size */
+    color: #555;               /* Dark grey text color */
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-.service-item i {
-    color: #788394; 
-    font-size: 1rem;
+    gap: 10px;                 /* Space between icon and text */
+    border: 1px solid transparent; /* Transparent border for smooth hover transition */
+    
+    /* Smooth Animation Settings */
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    top: 0;
 }
 
+/* Default Icon Style */
+.service-item i {
+    color: #788394; /* Original slate/greyish-blue icon color */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+/* --- Hover Effect Animation --- */
+.service-item:hover {
+    background-color: #ffffff; /* Pure white background to stand out */
+    border-color: var(--brand-gold); /* Thin gold border appears */
+    box-shadow: 0 10px 20px -10px rgba(212, 163, 77, 0.3); /* Soft gold shadow */
+    top: -5px; /* Slight upward movement for floating effect */
+    color: var(--brand-navy); /* Text turns navy blue */
+}
+
+/* Change icon color to gold on hover */
+.service-item:hover i {
+    color: var(--brand-gold);
+}
+ 
 .date-range-bar {
     background-color: #f8f9fa;
     border-right: 4px solid var(--brand-gold);
@@ -818,4 +855,300 @@ font-size: 0.85rem;
     flex-shrink: 0 !important; /* بيمنع الصور تنضغط أو تنزل سطر جديد */
     width: 80px !important;
     height: 80px !important;
+}
+/* تحديد أقصى ارتفاع لعمود النصوص على الشاشات الكبيرة ليطابق الصور */
+@media (min-width: 992px) {
+    .trip-text-column {
+        max-height: 530px; /* يعادل ارتفاع الصورة (420) + السلايدر (90) */
+    }
+}
+
+/* تجميل شريط التمرير (Scrollbar) الخاص بالوصف والخدمات */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px; /* شريط نحيف وأنيق */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--brand-gold); /* لون ذهبي يتناسب مع الهوية */
+    border-radius: 10px;
+}
+
+/* مسح الكلاس القديم إذا كان موجوداً لتجنب التعارض */
+.services-grid-container {
+    max-height: none; /* ألغينا الارتفاع القديم لأن الحاوية الجديدة تتكفل بالموضوع */
+    overflow-y: visible;
+}
+
+
+
+/* =========================================================
+   TRIP DETAILS SECONDARY SECTIONS (Pixel Perfect to Design)
+   ========================================================= */
+
+/* Independent Card Style replacing the bulky wrappers */
+.detail-card {
+    background-color: #ffffff; /* Pure white matching the design */
+    border-radius: 12px;       /* Smooth rounded corners */
+    padding: 16px 20px;        /* Comfortable breathing room inside */
+    margin-bottom: 12px;       /* Spacing between stacked items */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Very soft subtle shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover effect for a premium feel */
+.detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Colors for Icons */
+.text-custom-green {
+    color: #5ebb5e !important; /* Matches the positive green */
+}
+
+.text-custom-red {
+    color: #e65b50 !important; /* Matches the negative red */
+}
+
+/* =========================================================
+   INNER GRAY ITEMS (Matches the design perfectly)
+   ========================================================= */
+
+.gray-list-item {
+    background-color: #f8f9fa; /* لون رمادي فاتح جداً */
+    border-radius: 8px;        /* حواف ناعمة */
+    padding: 14px 20px;        /* مساحة داخلية ليتنفس النص */
+    color: #6c757d;            /* لون النص رمادي مريح */
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* =========================================================
+   BOOKING SECTION - CLEAN DESIGN
+   ========================================================= */
+
+/* Main Card Wrapper */
+.booking-card-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px 20px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Base Button Style to remove underlines and set fonts */
+.btn-booking {
+    text-decoration: none !important; /* This removes the underline */
+    padding: 12px 60px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+/* Gold Button */
+.btn-gold-filled {
+    background-color: #d4a017;
+    color: #ffffff !important;
+    border: none;
+}
+
+.btn-gold-filled:hover {
+    background-color: #b38612;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
+}
+
+/* White/Gray Button */
+.btn-white-outline {
+    background-color: #ffffff;
+    color: #6c757d !important;
+    border: 1px solid #dee2e6;
+}
+
+.btn-white-outline:hover {
+    background-color: #f8f9fa;
+    border-color: #ced4da;
+    color: #333333 !important;
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   EQUAL HEIGHT PACKAGES STYLING
+   ========================================================= */
+
+.package-modern-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    border: 1px solid #f2f4f7;
+    transition: transform 0.3s ease;
+    /* Necessary for internal flex alignment */
+    display: flex;
+    flex-direction: column;
+}
+
+.package-img-container {
+    height: 240px;
+    flex-shrink: 0; /* Prevents image from shrinking */
+}
+
+.package-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Area */
+.package-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Fills remaining height */
+}
+
+/* Meta Data Badges */
+.info-badge-item {
+    font-size: 0.85rem;
+    color: #495057;
+    background-color: #fdfaf3;
+    padding: 4px 12px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.text-gold-accent {
+    color: #d4a017 !important;
+    margin-left: 6px;
+}
+
+/* Pricing */
+.price-val {
+    color: #d4a017;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+/* Button Alignment */
+.full-width-gray-btn {
+    display: block;
+    width: 100%;
+    background-color: #f1f3f5;
+    color: #6c757d;
+    text-align: center;
+    padding: 12px;
+    border-radius: 12px;
+    text-decoration: none !important;
+    font-weight: 600;
+    margin-top: auto; /* Pushes button to bottom of flex container */
+}
+
+/* =========================================================
+   TOURS GRID STYLING - EQUAL HEIGHT & MODERN UI
+   ========================================================= */
+
+/* Ensure the grid columns stretch to the same height */
+#tours-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+/* Main Card Container */
+.tour-item-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px !important; /* Large rounded corners from Image 4.jpg */
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+.tour-item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Image Wrapper Styling */
+.card-img-wrapper {
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.tour-item-card:hover .card-img-wrapper img {
+    transform: scale(1.1);
+}
+
+/* Card Body Layout */
+.tour-item-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Makes the body fill the available space */
+}
+
+/* Tags & Info Badges Styling */
+.info-tag, .category-tag {
+    font-size: 0.85rem;
+    color: #555;
+    background: #f8f9fa;
+    padding: 5px 12px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.text-gold {
+    color: #d4a017 !important; /* Gold/Orange accent */
+}
+
+/* Price & Duration Labels */
+.price-tag .fs-4 {
+    color: #d4a017;
+}
+
+/* Descriptions & Titles */
+.tour-item-card h6 {
+    color: #002b4d; /* Navy Navy */
+    line-height: 1.5;
+}
+
+.card-description {
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits description to 3 lines for harmony */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Full Width Button */
+.btn-card-more {
+    background-color: #f1f3f5 !important; /* Light gray from image */
+    color: #6c757d !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-weight: 600;
+    margin-top: auto; /* PUSHES BUTTON TO THE BOTTOM */
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-card-more:hover {
+    background-color: #e9ecef !important;
+    color: #333 !important;
 }
