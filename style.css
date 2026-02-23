@@ -244,38 +244,59 @@ body { font-family: 'Cairo', sans-serif; overflow-x: hidden; text-align: right; 
     }
 }
 
-/* Timeline specific styles */
-.timeline-container {
-    min-width: 160px;
-}
-.timeline-line {
-    position: absolute;
-    top: 35%; /* Centers line behind the badge */
-    left: 5%;
-    right: 5%;
-    height: 2px;
-    border-top: 2px dashed #d4a34d; /* Gold dashed line */
-    z-index: 0;
-}
-.timeline-line::before, .timeline-line::after {
+/* ==========================================
+   Ticket Shape & Perforated Edges Styles 
+   ========================================== */
+
+/* The main cutout divider to make it look like a physical ticket */
+.ticket-divider::before, 
+.ticket-divider::after {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff; /* Matches the outer white widget background */
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* Top Cutout */
+.ticket-divider::before {
+    top: -15px;
+}
+
+/* Bottom Cutout */
+.ticket-divider::after {
+    bottom: -15px;
+}
+
+/* The horizontal golden dotted timeline */
+.ticket-timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-top: 2px dashed var(--brand-gold);
+    transform: translateY(-50%);
+    z-index: 0;
+}
+
+/* Golden dots at the ends of the timeline */
+.ticket-timeline-line::before, 
+.ticket-timeline-line::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
     background-color: var(--brand-gold);
     border-radius: 50%;
-    top: -5px;
-}
-.timeline-line::before { left: -5px; } /* Dot on the left */
-.timeline-line::after { right: -5px; } /* Dot on the right */
-
-.bg-gold-light {
-    background-color: rgba(212, 163, 77, 0.15) !important;
+    top: -6px; /* Centered on the line */
 }
 
-/* Dashed vertical borders inside the ticket details */
-@media (min-width: 1200px) {
-    .border-end-custom {
-        border-left: 2px dashed #dee2e6 !important; /* using border-left for RTL */
-    }
-}
+/* Left Dot */
+.ticket-timeline-line::before { left: -6px; }
+/* Right Dot */
+.ticket-timeline-line::after { right: -6px; }
