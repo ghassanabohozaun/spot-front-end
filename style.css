@@ -704,79 +704,118 @@ font-size: 0.85rem;
     box-shadow: 0 4px 12px rgba(212, 163, 77, 0.25);
 }
 
-/* 4. DETAILED TOUR CARDS (LEFT SIDE CONTENT)
-   Full details grid matching image 11.jpg
-   -------------------------------------------------------------------------- */
-.tour-item-card {
-    border-radius: 20px !important;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: none !important;
+
+/*** trip details ***/
+/* =========================================================
+   TRIP DETAILS COMPONENT STYLES (Fixed Swiper & Layout)
+   ========================================================= */
+
+.fw-800 { font-weight: 800; }
+.text-navy { color: var(--brand-navy) !important; }
+.text-gold { color: var(--brand-gold) !important; }
+.text-justify { text-align: justify; }
+.price-display { color: var(--brand-gold); }
+
+/* Badges Alignment */
+.badge-custom-light {
+    background: #f8f9fa; 
+    color: #444; 
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+/* Services Grid Fix */
+.services-grid-container {
+    max-height: 250px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.services-grid-container::-webkit-scrollbar { display: none; }
+
+.service-item {
+    font-size: 0.8rem;
+    color: #666; 
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.service-item i {
+    color: #788394; 
+    font-size: 1rem;
+}
+
+.date-range-bar {
+    background-color: #f8f9fa;
+    border-right: 4px solid var(--brand-gold);
+}
+
+/* --- SWIPER FIX (CRITICAL) --- */
+.tripThumbSwiper {
+    width: 100%;
+    overflow: hidden; /* Hide overflow to make carousel work */
+    padding-bottom: 5px;
+}
+
+/* Removed the problematic display:flex!important here so Swiper works */
+
+.tripThumbSwiper .swiper-slide {
+    width: 80px !important; /* Force strict width for square thumbnails */
+    height: 80px !important; /* Force strict height for square thumbnails */
+    opacity: 0.5;
+    transition: 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
     overflow: hidden;
 }
 
-.tour-item-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.08) !important;
+.tripThumbSwiper .swiper-slide.active,
+.tripThumbSwiper .swiper-slide:hover {
+    opacity: 1;
 }
 
-/* Content Alignment (RTL) */
-.tour-item-card .card-body {
-    direction: rtl; /* */
-    text-align: right;
-}
-
-.card-img-wrapper {
-    height: 200px;
-    overflow: hidden;
-}
-
-.card-img-wrapper img {
+.tripThumbSwiper .thumb-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border: 2px solid transparent;
+    transition: 0.3s;
 }
 
-/* Tags & Badges distribution */
-.info-tag, .category-tag {
-    background: #f8f9fa;
-    padding: 5px 12px;
+.tripThumbSwiper .swiper-slide.active img {
+    border-color: var(--brand-gold) !important;
+}
+
+.main-trip-img {
+    height: 420px;
+    width: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn-outline-custom {
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    background-color: #fff;
     border-radius: 8px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    transition: 0.3s ease;
+}
+.btn-outline-custom:hover {
+    border-color: var(--brand-navy);
     color: var(--brand-navy);
-    display: flex;
-    align-items: center;
-    gap: 5px;
+}
+.tripThumbSwiper .swiper-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
 }
 
-.category-tag {
-    background: #f1f4f8;
-    font-weight: 700;
+.tripThumbSwiper .swiper-slide {
+    flex-shrink: 0 !important; /* بيمنع الصور تنضغط أو تنزل سطر جديد */
+    width: 80px !important;
+    height: 80px !important;
 }
-
-.card-description {
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limits text to 3 lines */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* 5. FOOTER ACTIONS
-   Custom styling for "Load More" button with Navy hover
-   -------------------------------------------------------------------------- */
-.btn-load-more {
-    background-color: #f4f6f9;
-    color: #888888;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    transition: all 0.4s ease;
-}
-
-.btn-load-more:hover {
-    background-color: var(--brand-navy) !important;
-    color: #ffffff !important;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
