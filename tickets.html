@@ -5,70 +5,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تذاكر الطيران - نقاط للسفر والسياحة</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="src/css/fonts.css">
+    <link rel="stylesheet" href="src/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 
 <body class="bg-light">
-    <div id="noqat-preloader">
-        <div class="loader-content">
-            <div class="luxury-orbit-spinner">
-                <div class="orbit"></div>
-                <div class="orbit"></div>
-                <div class="orbit"></div>
-                <div class="center-point"></div>
+
+    <!-- <div id="noqat-preloader">
+        <div class="portal-wrapper">
+            <div class="portal-rings">
+                <div class="ring"></div>
+                <div class="ring"></div>
+                <div class="ring"></div>
             </div>
-            <div class="loader-tagline">Loading Experience...</div>
+
+            <div class="orbital-plane-path">
+                <div class="kinetic-plane">
+                    <i class="bi bi-airplane-fill"></i>
+                    <div class="engine-trail"></div>
+                </div>
+            </div>
+
+            <div class="portal-logo">
+                <img src="src/images/4.png" alt="Noqat Logo" class="final-reveal-logo">
+                <div class="glitch-text" data-text="نحلق بك إلى 120 وجهة...">نحلق بك إلى 120 وجهة...</div>
+            </div>
         </div>
-    </div>
+    </div> -->
+
 
     <div class="container-fluid bg-white p-0">
         <div class="row justify-content-center m-0">
             <div class="col-12 col-lg-10 p-0 position-relative shadow-sm">
 
-                <nav class="navbar navbar-expand-lg bg-white sticky-top py-3" id="mainNavbar">
+
+
+                <!-- navbar -->
+                <nav class="navbar navbar-expand-lg bg-white sticky-top py-3 noqat-navbar" id="mainNavbar">
                     <div class="container-fluid px-4">
-                        <a class="navbar-brand m-0 p-0" href="index.html">
-                            <img src="4.png" alt="نقاط للسفر والسياحة" class="main-logo">
+
+                        <a class="navbar-brand m-0 p-0 brand-hover" href="index.html">
+                            <img src="src/images/4.png" alt="نقاط للسفر والسياحة" class="main-logo"
+                                style="height: 50px; transition: 0.4s;">
                         </a>
 
-                        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarContent">
+                        <button class="navbar-toggler border-0 shadow-none custom-toggler" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarContent">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="navbarContent">
-                            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-start mt-3 mt-lg-0">
-                                <li class="nav-item"><a class="nav-link" href="index.html"><i
-                                            class="bi bi-house-door-fill"></i> الصفحة الرئيسية</a></li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
-                                            class="bi bi-airplane-fill"></i> الرحلات السياحية</a>
-                                    <ul class="dropdown-menu text-start border-0 shadow-sm rounded-3">
-                                        <li><a class="dropdown-item py-2" href="trips.html">رحلات داخلية</a></li>
-                                        <li><a class="dropdown-item py-2" href="trips.html">رحلات خارجية</a></li>
+                            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-start mt-3 mt-lg-0 noqat-nav-links">
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">
+                                        <i class="bi bi-house-door-fill"></i>
+                                        الصفحة الرئيسية
+                                    </a>
+                                </li>
+
+                                <li class="nav-item dropdown custom-dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#"
+                                        data-bs-toggle="dropdown">
+                                        <i class="bi bi-airplane-fill"></i>
+                                        <span>الرحلات السياحية</span>
+                                        <i class="bi bi-chevron-down ms-1 dropdown-indicator"></i>
+                                    </a>
+                                    <ul class="dropdown-menu text-start border-0 shadow-lg rounded-4 drop-menu-glass">
+                                        <li><a class="dropdown-item py-2" href="trips.html">الكل</a></li>
+                                        <li><a class="dropdown-item py-2" href="#">رحلات داخلية</a></li>
+                                        <li><a class="dropdown-item py-2" href="#">رحلات خارجية</a></li>
                                     </ul>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="tours.html"><i
-                                            class="bi bi-geo-alt-fill"></i> الجولات السياحية</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="tickets.html"><i
-                                            class="bi bi-ticket-perforated-fill"></i> تذاكر الطيران</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#"><i
-                                            class="bi bi-info-circle-fill"></i> عن نقاط</a></li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="tours.html">
+                                        <i class="bi bi-geo-alt-fill"></i> الجولات السياحية
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="tickets.html">
+                                        <i class="bi bi-ticket-perforated-fill"></i> تذاكر الطيران
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">
+                                        <i class="bi bi-info-circle-fill"></i> عن نقاط
+                                    </a>
+                                </li>
                             </ul>
 
-                            <div class="d-flex flex-column flex-lg-row align-items-center gap-3 mt-3 mt-lg-0">
-                                <a href="#" class="lang-badge bg-light"><img src="https://flagcdn.com/w20/sa.png"
-                                        width="20" class="me-2"> العربية</a>
-                                <button class="btn btn-gold px-4 py-2 w-100 w-lg-auto">تواصل معنا <i
-                                        class="bi bi-headset ms-1"></i></button>
+                            <div class="d-flex flex-column flex-lg-row align-items-center gap-4 mt-4 mt-lg-0">
+
+                                <div class="noqat-lang-pill" id="luxuryLangToggle">
+                                    <div class="active-indicator"></div>
+
+                                    <div class="lang-item ar-item active">
+                                        <img src="src/images/external/external_1.png" alt="AR">
+                                        <span>العربية</span>
+                                    </div>
+
+                                    <div class="lang-item en-item">
+                                        <img src="src/images/external/external_2.png" alt="EN">
+                                        <span>English</span>
+                                    </div>
+                                </div>
+
+                                <div class="magnetic-wrap">
+                                    <a href="contact.html"
+                                        class="btn btn-gold-nav btn-magnetic px-4 py-2 w-100 w-lg-auto fw-bold d-flex align-items-center justify-content-center gap-2 contact-animated-btn">
+                                        <span>تواصل معنا</span>
+                                        <i class="bi bi-headset fs-5 ringing-icon"></i>
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
+                    
                 </nav>
 
                 <main class=" pb-5">
@@ -97,91 +156,97 @@
 
                                 <hr class="text-muted opacity-10 mb-5">
 
-                                <div class="row align-items-center mb-5 stats-row text-start">
 
-                                    <div class="col-md-4 mb-4 mb-md-0 position-relative stat-divider">
-                                        <div
-                                            class="d-flex align-items-center justify-content-start justify-content-md-center pe-md-4">
-                                            <div class="ms-3 flex-shrink-0">
-                                                <svg width="60" height="60" viewBox="0 0 64 64" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="32" cy="32" r="22"
-                                                        stroke="var(--brand-gold)" stroke-width="2.5" fill="#fcf8f2" />
+
+                                <div class="row align-items-center mb-5 mt-5 text-start reveal active" dir="rtl">
+
+                                    <div class="col-md-4 mb-4 mb-md-0 position-relative stat-divider-line">
+                                        <div class="d-flex align-items-center justify-content-center"
+                                            style="gap: 15px;">
+                                            <div class="flex-shrink-0" style="width: 60px; height: 60px;">
+                                                <svg width="60" height="60" viewBox="0 0 64 64"
+                                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="32" cy="32" r="22" stroke="#d4a34d"
+                                                        stroke-width="2.5" fill="#fcf8f2" />
                                                     <path d="M32 10c-7 0-12 10-12 22s5 22 12 22 12-10 12-22-5-22-12-22z"
-                                                        stroke="var(--brand-gold)" stroke-width="2.5" />
-                                                    <path d="M10 32h44" stroke="var(--brand-gold)"
-                                                        stroke-width="2.5" />
+                                                        stroke="#d4a34d" stroke-width="2.5" />
+                                                    <path d="M10 32h44" stroke="#d4a34d" stroke-width="2.5" />
                                                     <path
                                                         d="M22 20c-2.5 0-4.5 2-4.5 4.5 0 3.5 4.5 9.5 4.5 9.5s4.5-6 4.5-9.5C26.5 22 24.5 20 22 20z"
-                                                        fill="var(--brand-navy)" />
+                                                        fill="#1b3651" />
                                                     <path
                                                         d="M42 24c-2.5 0-4.5 2-4.5 4.5 0 3.5 4.5 9.5 4.5 9.5s4.5-6 4.5-9.5C46.5 26 44.5 24 42 24z"
-                                                        fill="var(--brand-navy)" />
+                                                        fill="#1b3651" />
                                                     <path
                                                         d="M36 42c-2.5 0-4.5 2-4.5 4.5 0 3.5 4.5 9.5 4.5 9.5s4.5-6 4.5-9.5C40.5 44 38.5 42 36 42z"
-                                                        fill="var(--brand-navy)" />
+                                                        fill="#1b3651" />
                                                 </svg>
                                             </div>
-                                            <div class="d-flex align-items-center gap-2">
-                                                <span class="fw-bold stat-number">120</span>
-                                                <span class="text-muted small stat-label">دولة<br>ووجهة</span>
+                                            <div class="d-flex align-items-center" style="gap: 12px;">
+                                                <span class="fw-bolder m-0 p-0"
+                                                    style="color: #d4a34d; font-size: 2.6rem; line-height: 1;">120</span>
+                                                <span class="text-muted small m-0 p-0"
+                                                    style="line-height: 1.3; text-align: right; white-space: nowrap;">دولة<br>ووجهة</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4 mb-4 mb-md-0 position-relative stat-divider">
-                                        <div
-                                            class="d-flex align-items-center justify-content-start justify-content-md-center pe-md-4">
-                                            <div class="ms-3 flex-shrink-0">
+                                    <div class="col-md-4 mb-4 mb-md-0 position-relative stat-divider-line">
+                                        <div class="d-flex align-items-center justify-content-center"
+                                            style="gap: 15px;">
+                                            <div class="flex-shrink-0" style="width: 60px; height: 60px;">
                                                 <svg width="60" height="60" viewBox="0 0 64 64"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g transform="rotate(15 32 32)">
                                                         <rect x="12" y="20" width="40" height="24"
-                                                            rx="4" stroke="var(--brand-gold)"
-                                                            stroke-width="2.5" fill="#fcf8f2" />
-                                                        <path d="M38 20v24" stroke="var(--brand-gold)"
-                                                            stroke-width="2.5" stroke-dasharray="4 4" />
+                                                            rx="4" stroke="#d4a34d" stroke-width="2.5"
+                                                            fill="#fcf8f2" />
+                                                        <path d="M38 20v24" stroke="#d4a34d" stroke-width="2.5"
+                                                            stroke-dasharray="4 4" />
                                                         <path d="M32 30l-6 6h-4l2-2-6-2-2-4 4 1 4-4 8 2 2 3z"
-                                                            fill="var(--brand-navy)" />
+                                                            fill="#1b3651" />
                                                     </g>
                                                 </svg>
                                             </div>
-                                            <div class="d-flex align-items-center gap-2">
-                                                <div class="d-flex align-items-baseline gap-1">
-                                                    <span class="fw-bold stat-number">24</span>
-                                                    <span class="fw-bold fs-4 text-gold">ألف</span>
+                                            <div class="d-flex align-items-center" style="gap: 12px;">
+                                                <div class="d-flex align-items-baseline" style="gap: 6px;">
+                                                    <span class="fw-bolder m-0 p-0"
+                                                        style="color: #d4a34d; font-size: 2.6rem; line-height: 1;">24</span>
+                                                    <span class="fw-bold m-0 p-0"
+                                                        style="color: #d4a34d; font-size: 1.2rem;">ألف</span>
                                                 </div>
-                                                <span class="text-muted small stat-label">رحلة<br>مقدمة</span>
+                                                <span class="text-muted small m-0 p-0"
+                                                    style="line-height: 1.3; text-align: right; white-space: nowrap;">رحلة<br>مقدمة</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div
-                                            class="d-flex align-items-center justify-content-start justify-content-md-center pe-md-4">
-                                            <div class="ms-3 flex-shrink-0 position-relative">
+                                    <div class="col-md-4 mb-4 mb-md-0 position-relative">
+                                        <div class="d-flex align-items-center justify-content-center"
+                                            style="gap: 15px;">
+                                            <div class="flex-shrink-0" style="width: 60px; height: 60px;">
                                                 <svg width="60" height="60" viewBox="0 0 64 64"
                                                     fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path
                                                         d="M20 50h24v4H20v-4zm4-26h16v22H24V24zm-4 8h-4v14h4V32zm24 0h4v14h-4V32z"
-                                                        fill="var(--brand-gold)" />
+                                                        fill="#d4a34d" />
                                                     <path d="M26 24V12c0-3.5 3-6 6-6s6 2.5 6 6v12H26z"
-                                                        fill="var(--brand-gold)" />
-                                                    <circle cx="48" cy="18" r="12"
-                                                        fill="var(--brand-navy)" />
+                                                        fill="#d4a34d" />
+                                                    <circle cx="48" cy="18" r="12" fill="#1b3651" />
                                                     <path d="M44 20l6-6-1-1-6 2-3-3 1.5-1.5 3 3 6-2 1.5 1.5-4 6-1-1z"
-                                                        fill="var(--brand-gold)" />
+                                                        fill="#d4a34d" />
                                                 </svg>
                                             </div>
-                                            <div class="d-flex align-items-center gap-2">
-                                                <span class="fw-bold stat-number">03</span>
-                                                <span class="text-muted small stat-label">درجات<br>سياحية</span>
+                                            <div class="d-flex align-items-center" style="gap: 12px;">
+                                                <span class="fw-bolder m-0 p-0"
+                                                    style="color: #d4a34d; font-size: 2.6rem; line-height: 1;">03</span>
+                                                <span class="text-muted small m-0 p-0"
+                                                    style="line-height: 1.3; text-align: right; white-space: nowrap;">درجات<br>سياحية</span>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-
                                 <div class="booking-form-area mt-5 pt-4 border-top border-light">
                                     <h6 class="fw-bold text-navy mb-4 text-start">الوجهة السياحية</h6>
 
@@ -245,7 +310,7 @@
                                     <div
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container" style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=600"
+                                            <img src="src/images/external/external_19.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -269,7 +334,7 @@
                                             <p class="booking-desc text-muted mb-4">رحلات يومية إلى القاهرة - ذهاب
                                                 وعودة.
                                                 يشمل كافة الرسوم والضرائب.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -279,7 +344,7 @@
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container "
                                             style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?q=80&w=600"
+                                            <img src="src/images/external/external_20.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -303,7 +368,7 @@
                                             <p class="booking-desc text-muted mb-4">اكتشف جمال موسكو مع رحلاتنا
                                                 المباشرة.
                                                 وزن أمتعة إضافي مجاني.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +377,7 @@
                                     <div
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container" style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=600"
+                                            <img src="src/images/external/external_21.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -335,7 +400,7 @@
                                             <h5 class="package-title-text fw-bold mb-2">تذكرة طيران إلى دبي</h5>
                                             <p class="booking-desc text-muted mb-4">عروض نهاية الأسبوع المذهلة إلى دبي.
                                                 احجز الآن بأسعار تنافسية.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -344,7 +409,7 @@
                                     <div
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container" style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=600"
+                                            <img src="src/images/external/external_22.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -366,7 +431,7 @@
                                             <h5 class="package-title-text fw-bold mb-2">تذكرة طيران إلى لندن</h5>
                                             <p class="booking-desc text-muted mb-4">رحلات مباشرة ومريحة لعاصمة الضباب
                                                 بأسعار حصرية.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -375,7 +440,7 @@
                                     <div
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container" style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=600"
+                                            <img src="src/images/external/external_23.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -398,7 +463,7 @@
                                             <p class="booking-desc text-muted mb-4">استمتع بعاصمة النور والموضة مع
                                                 خيارات
                                                 طيران متعددة.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -407,7 +472,7 @@
                                     <div
                                         class="package-modern-card h-100 d-flex flex-column shadow-sm rounded-4 overflow-hidden bg-white">
                                         <div class="package-img-container img-shine-container" style="height: 220px;">
-                                            <img src="https://images.unsplash.com/photo-1534008897995-27a23e859048?q=80&w=600"
+                                            <img src="src/images/external/external_24.jpg"
                                                 alt="Trip" class="w-100 h-100" style="object-fit: cover;">
                                         </div>
                                         <div class="package-content-wrapper p-4 d-flex flex-column flex-grow-1">
@@ -430,7 +495,7 @@
                                             <p class="booking-desc text-muted mb-4">رحلة استرخاء استوائية تبدأ بحجز
                                                 تذكرة
                                                 مريحة ومخفضة.</p>
-                                            <a href="#" class="full-width-gray-btn mt-auto">عرض التفاصيل</a>
+                                            <a href="#" class="full-width-gray-btn mt-auto">حجز تذكرة</a>
                                         </div>
                                     </div>
                                 </div>
@@ -558,8 +623,8 @@
             <i class="bi bi-rocket-takeoff-fill"></i>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+    <script src="src/js/bootstrap.bundle.min.js"></script>
+    <script src="src/js/script.js"></script>
 </body>
 
 </html>

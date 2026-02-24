@@ -1,0 +1,4329 @@
+:root {
+  --brand-navy: #1b3651;
+  --brand-gold: #d4a34d;
+  --text-muted: #888;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  overflow-x: hidden;
+  text-align: right;
+}
+html,
+body {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For IE and Edge */
+}
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px; /* Increased thickness slightly for better visibility */
+  background: rgba(
+    27,
+    54,
+    81,
+    0.05
+  ); /* Very light Navy background for the track */
+  z-index: 10001;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    to left,
+    var(--brand-gold),
+    #ffeb3b
+  ); /* Radiant Gradient Gold */
+  box-shadow: 0 0 15px rgba(212, 163, 77, 0.6);
+  transition: width 0.15s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* --- Navbar --- */
+.navbar {
+  transition: all 0.3s ease;
+  z-index: 1020;
+}
+.logo-cls-1 {
+  fill: var(--brand-navy);
+}
+.logo-cls-2 {
+  fill: var(--brand-gold);
+}
+.logo-cls-3 {
+  font-family: "Cairo", sans-serif;
+  font-weight: 700;
+}
+.logo-cls-4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+  color: var(--brand-navy);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0 5px;
+}
+.navbar-nav .nav-link i {
+  color: var(--brand-gold);
+  margin-left: 4px;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--brand-gold);
+}
+.btn-gold {
+  background-color: var(--brand-gold);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: 0.3s;
+  border: none;
+}
+.btn-gold:hover {
+  background-color: #b5893d;
+  color: #fff;
+}
+.lang-badge {
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.85rem;
+  color: var(--brand-navy);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.dropdown-menu {
+  text-align: right;
+}
+.dropdown-item {
+  text-align: right;
+  font-weight: 600;
+  color: var(--brand-navy);
+}
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: var(--brand-gold);
+}
+
+/* --- Cosmic Background --- */
+#noqat-preloader {
+  position: fixed;
+  inset: 0;
+  background: #1b3651; /* */
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.portal-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+/* Pulsing Golden Rings */
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(221, 165, 59, 0.3); /* */
+  border-radius: 50%;
+  animation: ringPulse 2s infinite ease-out;
+}
+.ring:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.ring:nth-child(3) {
+  animation-delay: 1s;
+}
+
+/* The Plane opening the Portal */
+.orbital-plane-path {
+  position: absolute;
+  inset: 0;
+  animation: orbitSpin 1.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kinetic-plane {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  color: #dda53b; /* */
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px #dda53b);
+}
+
+/* Glowing Engine Trail */
+.engine-trail {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, transparent, #dda53b);
+  filter: blur(2px);
+}
+
+/* The Final Logo */
+.portal-logo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5) translateZ(-500px);
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.final-reveal-logo {
+  width: 140px;
+  filter: brightness(0) invert(1); /* */
+  margin-bottom: 20px;
+}
+
+.glitch-text {
+  color: #dda53b; /* */
+  font-weight: 700;
+  font-family: "Cairo", sans-serif; /* */
+  letter-spacing: 2px;
+}
+
+/* --- Animations --- */
+@keyframes ringPulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Final State after Loading */
+#noqat-preloader.ready .orbital-plane-path {
+  animation: planeExplode 0.8s forwards;
+}
+#noqat-preloader.ready .portal-logo {
+  opacity: 1;
+  transform: scale(1) translateZ(0);
+}
+
+@keyframes planeExplode {
+  to {
+    transform: scale(5) translateZ(500px);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   SCROLL REVEAL ANIMATIONS (English Comments)
+   ========================================================= */
+
+/* Initial state: Hidden and moved down */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+  visibility: hidden;
+}
+
+/* Active state: Visible and in place */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+/* Optional: Slide from Right for specific elements */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- Hero Slider --- */
+.hero-section {
+  height: 80vh;
+  min-height: 500px;
+  position: relative;
+} /* Height adjusted to fit the container */
+.carousel,
+.carousel-inner,
+.carousel-item {
+  height: 100%;
+}
+.carousel-item {
+  background-size: cover;
+  background-position: center;
+}
+.hero-overlay {
+  background-color: rgba(27, 54, 81, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-indicators [data-bs-target] {
+  background-color: var(--brand-gold);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 5px;
+}
+
+/* --- Search Bar --- */
+.search-container {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 95%; /* Percentage to be responsive inside col-10 */
+  max-width: 900px;
+}
+
+.search-box {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.search-input {
+  font-size: 1.1rem;
+  color: #555;
+}
+.search-input:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.btn-navy-search {
+  background-color: var(--brand-navy);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 14px 60px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  border: none;
+}
+.btn-navy-search:hover {
+  background-color: #12253a;
+  color: #fff;
+}
+
+/* --- Services Section --- */
+.services-section {
+  background-color: #ffffff;
+  padding: 80px 0 40px;
+}
+.service-card {
+  background: transparent;
+  border: none;
+  transition: 0.4s ease;
+  border-radius: 15px;
+  padding: 15px 5px;
+}
+.service-card:hover {
+  transform: translateY(-10px);
+  background: #fff;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+}
+.icon-circle {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f8f9fa;
+  transition: 0.3s;
+}
+.service-card:hover .icon-circle {
+  box-shadow: 0 10px 25px rgba(212, 163, 77, 0.2);
+  border-color: #fff;
+}
+.service-title {
+  color: var(--brand-navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+.service-text {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  min-height: 65px;
+}
+.view-all-link {
+  color: var(--brand-gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: 0.3s;
+}
+.view-all-link:hover {
+  color: var(--brand-navy);
+  border-bottom-color: var(--brand-navy);
+}
+
+/* --- Destinations Section --- */
+.dest-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.dest-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+}
+.dest-img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+  transition: 0.5s;
+}
+.dest-card:hover .dest-img {
+  transform: scale(1.05);
+}
+
+/* --- Responsive --- */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+  .search-container {
+    bottom: -70px;
+  }
+}
+@media (max-width: 768px) {
+  .search-container {
+    position: relative;
+    transform: none;
+    bottom: auto;
+    left: auto;
+    margin-top: -40px;
+  }
+  .hero-section {
+    height: 70vh;
+  }
+  .btn-navy-search {
+    width: 100%;
+  }
+  .services-section {
+    padding-top: 20px;
+  }
+}
+
+/* --- Logo Wrapper Styling --- */
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0; /* Simple breathing space */
+}
+
+/* --- Main Logo (Responsive Logo) --- */
+.main-logo {
+  width: auto; /* Keep original aspect ratio */
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  object-fit: contain;
+}
+
+/* 1. Large Screens (Laptops & Desktops) */
+@media (min-width: 992px) {
+  .main-logo {
+    height: 75px; /* Increased size for a luxurious feel on the wide bar */
+  }
+
+  /* Hover Effect */
+  .brand-hover:hover .main-logo {
+    transform: scale(1.05);
+    filter: drop-shadow(0 5px 15px rgba(221, 165, 59, 0.2));
+  }
+}
+
+/* 2. Medium Screens (Tablets) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .main-logo {
+    height: 60px;
+  }
+}
+
+/* 3. Mobile Screens (Mobile) */
+@media (max-width: 767px) {
+  .main-logo {
+    height: 45px; /* Suitable size for narrow mobile space */
+  }
+
+  .logo-wrapper {
+    padding: 2px 0;
+  }
+}
+
+/* --- Destinations Section Adjustments --- */
+.bg-gold {
+  background-color: var(--brand-gold) !important;
+}
+
+.dest-card {
+  border-radius: 16px !important;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.dest-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-outline-navy {
+  border: 2px solid var(--brand-navy);
+  color: var(--brand-navy);
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.btn-outline-navy:hover {
+  background-color: var(--brand-navy);
+  color: #fff;
+}
+
+.dest-img {
+  height: 240px;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* --- International Destinations Slider Styles --- */
+
+.custom-nav-btn {
+  background-color: #ffffff !important;
+  width: 55px !important;
+  height: 55px !important;
+  border-radius: 50% !important;
+  color: var(--brand-navy) !important;
+  z-index: 100 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition curve */
+  border: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  top: 50% !important;
+  transform: translateY(-50%); /* Centered vertically by default */
+}
+
+.custom-nav-btn:hover {
+  background-color: var(--brand-gold) !important;
+  color: white !important;
+  /* Reduced upward movement from -50% to -55% for a subtle lift */
+  transform: translateY(-55%) scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.custom-nav-btn::after {
+  font-size: 1.2rem !important; /* Slightly adjusted for better balance */
+  font-weight: bold;
+}
+
+/* Positioning buttons inside the slider boundaries */
+.swiper-button-prev {
+  left: 15px !important;
+}
+.swiper-button-next {
+  right: 15px !important;
+}
+
+/* --- Equal Height Card Styles --- */
+.internationalSwiper .swiper-slide {
+  height: auto; /* Required for Swiper auto-height consistency */
+  display: flex;
+}
+
+.internationalSwiper .dest-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  background: #fff;
+}
+
+.internationalSwiper .card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Makes the body fill the available space */
+}
+
+.internationalSwiper .card-title {
+  min-height: 3rem; /* Ensures consistent title space even if empty */
+}
+
+.internationalSwiper .text-muted.small {
+  flex-grow: 1; /* Pushes the price and button to the bottom */
+  margin-bottom: 1rem;
+}
+
+.internationalSwiper .dest-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ==========================================
+Section 6: Booking Panel Extracted Styles
+========================================== */
+
+/* Main Containers */
+.booking-section {
+  background-color: #f8f9fa;
+}
+.booking-panel {
+  direction: rtl;
+}
+
+/* Text Utilities */
+.text-navy {
+  color: var(--brand-navy) !important;
+}
+.text-gold {
+  color: var(--brand-gold) !important;
+}
+
+/* Header Elements */
+.icon-circle-large {
+  width: 85px;
+  height: 85px;
+}
+.plane-icon-header {
+  color: var(--brand-gold);
+  transform: rotate(45deg);
+}
+.booking-desc {
+  font-size: 0.9rem;
+  max-width: 800px;
+}
+
+/* Form Buttons */
+.btn-slate {
+  background-color: #5b6978;
+  color: #ffffff;
+  transition: 0.3s ease;
+  border: none;
+}
+.btn-slate:hover {
+  background-color: var(--brand-navy);
+  color: #ffffff;
+}
+
+/* ==========================================
+Ticket Details Area
+========================================== */
+.ticket-details-box {
+  background-color: #f4f6f9;
+}
+
+/* Timeline Typography */
+.ticket-time-wrapper {
+  min-width: 100px;
+}
+.ticket-time {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+.ticket-date,
+.ticket-location {
+  font-size: 0.8rem;
+}
+
+/* Middle Timeline Badge & Line */
+.duration-badge-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.duration-badge {
+  background-color: #fcecd4;
+  font-size: 0.85rem;
+  z-index: 5;
+}
+.stops-text {
+  font-size: 0.75rem;
+}
+
+.ticket-timeline-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  border-top: 2px dashed var(--brand-gold);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+.ticket-timeline-line::before,
+.ticket-timeline-line::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: var(--brand-gold);
+  border-radius: 50%;
+  top: -6px;
+}
+.ticket-timeline-line::before {
+  left: -6px;
+}
+.ticket-timeline-line::after {
+  right: -6px;
+}
+
+/* The Perforated Divider (Ticket Cutout Line) */
+.ticket-divider {
+  width: 2px;
+  border-left: 6px dashed #ffffff;
+}
+.ticket-divider::before,
+.ticket-divider::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.ticket-divider::before {
+  top: -15px;
+}
+.ticket-divider::after {
+  bottom: -15px;
+}
+
+/* Passenger Side Info */
+.ticket-passenger-section {
+  max-width: 420px;
+}
+.ticket-meta-title {
+  font-size: 0.85rem;
+}
+.ticket-meta-value {
+  font-size: 0.85rem;
+}
+.flight-class-badge {
+  font-size: 0.8rem;
+  border-color: #e2e6ea !important;
+}
+
+/* ==========================================
+Section 7: Contact & Map Section Styles
+========================================== */
+
+/* Matches the background color of Section 6 */
+.contact-section {
+  background-color: #f8f9fa;
+}
+
+.contact-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+/* Gray Circular Background for Icons */
+.contact-icon-box {
+  width: 45px;
+  height: 45px;
+  background-color: #f1f4f8;
+  color: var(--brand-navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+/* Typography for Contact Items */
+.contact-title {
+  color: var(--brand-navy);
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.contact-text {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* Map Wrapper to ensure rounded corners and hide overflow */
+.map-wrapper {
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: #f1f4f8;
+}
+
+/* Responsive styling for the iframe map */
+.contact-map {
+  width: 100%;
+  height: 400px;
+  border: 0;
+  display: block;
+}
+
+/* ==========================================
+Section 8: Newsletter Section Styles
+========================================== */
+
+.newsletter-section {
+  background-color: #ffffff;
+}
+
+/* Typography */
+.newsletter-title {
+  font-size: 1.8rem;
+  letter-spacing: -0.5px;
+}
+
+.newsletter-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* Form Group Wrapper */
+.newsletter-form-group {
+  border: 1px solid #e0e4e8;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Add a subtle gold glow when typing in the input */
+.newsletter-form-group:focus-within {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 0.2rem rgba(212, 163, 77, 0.15) !important;
+}
+
+/* Input Field Styling */
+.newsletter-input {
+  background-color: transparent;
+  font-size: 0.95rem;
+  padding-right: 15px; /* Space from the right edge in RTL */
+  color: var(--brand-navy);
+}
+
+.newsletter-input::placeholder {
+  color: #aeb5bc;
+}
+
+/* Gold Subscription Button */
+.newsletter-btn {
+  background-color: var(--brand-gold);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 10px 25px;
+  border-radius: 8px; /* Slightly less than the wrapper to fit inside perfectly */
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.newsletter-btn:hover {
+  background-color: #b5893d; /* Darker gold on hover */
+  color: #ffffff;
+}
+
+/* Flip the send icon so it points to the left/up for RTL */
+.rtl-flip-icon {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+/* ==========================================
+Section 9: Footer Styles
+========================================== */
+
+/* Main Background matching previous sections */
+.footer-top {
+  background-color: #f8f9fa;
+}
+
+/* Footer Typography & Spacing */
+.footer-title {
+  font-size: 1.1rem;
+}
+
+.footer-support-desc {
+  line-height: 1.8;
+}
+
+/* Links Styling */
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #888; /* Muted text color */
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--brand-gold);
+  transform: translateX(-5px); /* Gentle slide to the left on hover for RTL */
+}
+
+/* Technical Support Button (Teal Outline) */
+.btn-support {
+  border: 1px solid #1c7a76;
+  color: #1c7a76;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-support:hover {
+  background-color: #1c7a76;
+  color: #ffffff;
+}
+
+.btn-support i {
+  font-size: 1.2rem;
+}
+
+/* Social Media Icons Styling */
+.social-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+  opacity: 0.85;
+  color: #ffffff;
+}
+
+/* Brand Colors for Social Icons */
+.social-tw {
+  background-color: #1da1f2;
+}
+
+.social-ig {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+}
+
+.social-fb {
+  background-color: #3b5998;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+  background-color: #ffffff;
+}
+
+.copyright-text {
+  font-size: 0.85rem;
+}
+
+/* ==========================================================================
+TOURS PAGE: MASTER STYLES (Filters & Detailed Grid)
+========================================================================== */
+
+/* 1. LAYOUT & BACKGROUND
+Ensures the light grey background is applied to the entire section
+-------------------------------------------------------------------------- */
+.tours-results-bg {
+  background-color: #f8f9fa;
+}
+
+/* 2. SIDEBAR FILTER (RIGHT SIDE)
+Handles the sticky sidebar and the Dual Range Slider logic
+-------------------------------------------------------------------------- */
+.sticky-top-filter {
+  position: sticky;
+  top: 110px;
+  z-index: 10;
+}
+
+.filter-card {
+  border: none !important;
+  border-radius: 20px !important;
+}
+
+/* Dual Range Slider Components */
+.range-slider {
+  height: 5px;
+  position: relative;
+  background: #f1f4f8;
+  border-radius: 5px;
+}
+
+.range-selected {
+  height: 100%;
+  position: absolute;
+  background: var(--brand-gold); /* */
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.range-slider input {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: 0;
+  left: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  z-index: 2;
+}
+
+.range-slider input::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--brand-gold);
+  pointer-events: auto;
+  -webkit-appearance: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.price-box {
+  background-color: #f4f6f9;
+  padding: 10px;
+  border-radius: 10px;
+  width: 48%;
+  text-align: center;
+}
+
+/* 3. CATEGORY NAVIGATION (LEFT SIDE CONTENT)
+White rounded bar positioned directly above the tour cards
+-------------------------------------------------------------------------- */
+.category-navbar {
+  border: 1px solid #f1f4f8;
+}
+
+.category-tab {
+  background-color: #f8f9fa;
+  color: var(--brand-navy);
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-tab:hover:not(.active) {
+  background-color: #ffffff;
+  color: var(--brand-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+.category-tab.active {
+  background-color: var(--brand-gold) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(212, 163, 77, 0.25);
+}
+
+/*** trip details ***/
+
+/* =========================================================
+TRIP DETAILS COMPONENT STYLES (Fixed Swiper & Layout)
+========================================================= */
+
+main {
+  background-color: #f8f9fa; /* Soft light gray color matching the image */
+  min-height: 100vh; /* Ensures the background covers the full screen height */
+  padding-bottom: 3rem; /* Adds breathing room at the bottom */
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+.text-navy {
+  color: var(--brand-navy) !important;
+}
+.text-gold {
+  color: var(--brand-gold) !important;
+}
+.text-justify {
+  text-align: justify;
+}
+.price-display {
+  color: var(--brand-gold);
+}
+
+/* Badges Alignment */
+.badge-custom-light {
+  background: #f8f9fa;
+  color: #444;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+
+/* Services Grid Fix */
+.services-grid-container {
+  max-height: 250px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.services-grid-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+SERVICE ITEM STYLES (With Background & Hover Animation)
+========================================================= */
+
+.service-item {
+  background-color: #f8f9fa; /* Very light elegant background matching the design */
+  padding: 12px 15px; /* Comfortable inner padding */
+  border-radius: 12px; /* Smooth rounded corners */
+  font-size: 0.85rem; /* Appropriate font size */
+  color: #555; /* Dark grey text color */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
+  border: 1px solid transparent; /* Transparent border for smooth hover transition */
+
+  /* Smooth Animation Settings */
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  top: 0;
+}
+
+/* Default Icon Style */
+.service-item i {
+  color: #788394; /* Original slate/greyish-blue icon color */
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+/* --- Hover Effect Animation --- */
+.service-item:hover {
+  background-color: #ffffff; /* Pure white background to stand out */
+  border-color: var(--brand-gold); /* Thin gold border appears */
+  box-shadow: 0 10px 20px -10px rgba(212, 163, 77, 0.3); /* Soft gold shadow */
+  top: -5px; /* Slight upward movement for floating effect */
+  color: var(--brand-navy); /* Text turns navy blue */
+}
+
+/* Change icon color to gold on hover */
+.service-item:hover i {
+  color: var(--brand-gold);
+}
+
+.date-range-bar {
+  background-color: #f8f9fa;
+  border-right: 4px solid var(--brand-gold);
+}
+
+/* --- SWIPER FIX (CRITICAL) --- */
+.tripThumbSwiper {
+  width: 100%;
+  overflow: hidden; /* Hide overflow to make carousel work */
+  padding-bottom: 5px;
+}
+
+/* Removed the problematic display:flex!important here so Swiper works */
+
+.tripThumbSwiper .swiper-slide {
+  width: 80px !important; /* Force strict width for square thumbnails */
+  height: 80px !important; /* Force strict height for square thumbnails */
+  opacity: 0.5;
+  transition: 0.3s ease;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tripThumbSwiper .swiper-slide.active,
+.tripThumbSwiper .swiper-slide:hover {
+  opacity: 1;
+}
+
+.tripThumbSwiper .thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+
+.tripThumbSwiper .swiper-slide.active img {
+  border-color: var(--brand-gold) !important;
+}
+
+.main-trip-img {
+  height: 420px;
+  width: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.btn-outline-custom {
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  background-color: #fff;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+.btn-outline-custom:hover {
+  border-color: var(--brand-navy);
+  color: var(--brand-navy);
+}
+.tripThumbSwiper .swiper-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+}
+
+.tripThumbSwiper .swiper-slide {
+  flex-shrink: 0 !important; /* Prevents images from squeezing or wrapping */
+  width: 80px !important;
+  height: 80px !important;
+}
+/* Set max height for text column on large screens to match images */
+@media (min-width: 992px) {
+  .trip-text-column {
+    max-height: 530px; /* Equals Image Height (420) + Slider (90) */
+  }
+}
+
+/* Beautiful Scrollbar for descriptions and services */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px; /* Slim and elegant bar */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--brand-gold); /* Gold color matching brand identity */
+  border-radius: 10px;
+}
+
+/* Clear old class if exists to prevent conflicts */
+.services-grid-container {
+  max-height: none;
+  overflow-y: visible;
+}
+
+/* =========================================================
+TRIP DETAILS SECONDARY SECTIONS (Pixel Perfect to Design)
+========================================================= */
+
+/* Independent Card Style replacing the bulky wrappers */
+.detail-card {
+  background-color: #ffffff; /* Pure white matching the design */
+  border-radius: 12px; /* Smooth rounded corners */
+  padding: 16px 20px; /* Comfortable breathing room inside */
+  margin-bottom: 12px; /* Spacing between stacked items */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); /* Very soft subtle shadow */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Optional hover effect for a premium feel */
+.detail-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom Colors for Icons */
+.text-custom-green {
+  color: #5ebb5e !important; /* Matches the positive green */
+}
+
+.text-custom-red {
+  color: #e65b50 !important; /* Matches the negative red */
+}
+
+/* =========================================================
+INNER GRAY ITEMS (Matches the design perfectly)
+========================================================= */
+
+.gray-list-item {
+  background-color: #f8f9fa; /* Very light grey color */
+  border-radius: 8px; /* Smooth edges */
+  padding: 14px 20px; /* Inner padding for text breathing */
+  color: #6c757d; /* Comfortable grey text color */
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* =========================================================
+BOOKING SECTION - CLEAN DESIGN
+========================================================= */
+
+/* Main Card Wrapper */
+.booking-card-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Base Button Style to remove underlines and set fonts */
+.btn-booking {
+  text-decoration: none !important; /* This removes the underline */
+  padding: 12px 60px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.booking-desc {
+  font-size: calc(1rem - 3px) !important; /* Original size minus 2px */
+  line-height: 1.6;
+  color: #70798b; /* Ensures it stays muted and professional */
+  font-weight: 400;
+}
+
+/* Optional: For mobile devices to keep it readable */
+@media (max-width: 768px) {
+  .booking-desc {
+    font-size: 0.85rem !important;
+  }
+}
+/* Gold Button */
+.btn-gold-filled {
+  background-color: #d4a017;
+  color: #ffffff !important;
+  border: none;
+}
+
+.btn-gold-filled:hover {
+  background-color: #b38612;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(212, 160, 23, 0.4);
+}
+
+/* White/Gray Button */
+.btn-white-outline {
+  background-color: #ffffff;
+  color: #6c757d !important;
+  border: 1px solid #dee2e6;
+}
+
+.btn-white-outline:hover {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
+  color: #333333 !important;
+  transform: translateY(-3px);
+}
+
+/* =========================================================
+EQUAL HEIGHT PACKAGES STYLING
+========================================================= */
+
+/* Main Card Container */
+.package-modern-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border: 1px solid #f2f4f7;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Allows internal alignment */
+}
+
+/* Image Fixed Height */
+.package-img-container {
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.package-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.package-title-text {
+  font-size: 1.125rem !important; /* Reduced from ~20px to 18px */
+  line-height: 1.4;
+  color: var(--brand-navy);
+}
+
+.package-description-text {
+  font-size: 0.7rem !important; /* Reduced from ~0.82rem to ~0.7rem */
+  line-height: 1.7; /* Improved readability for small text */
+  color: #6c757d !important; /* Maintaining the muted/gray look */
+  text-align: justify;
+}
+/* Metadata Labels Styling */
+.info-badge-item {
+  font-size: 0.85rem;
+  color: #495057;
+  background-color: #fdfaf3;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-gold-accent {
+  color: #d4a017 !important; /* Brand gold from Image 4.jpg */
+  margin-left: 6px;
+}
+
+.price-val {
+  color: #d4a017;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* Button Fixed at Bottom */
+.full-width-gray-btn {
+  display: block;
+  width: 100%;
+  background-color: #f1f3f5;
+  color: #6c757d;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  font-weight: 600;
+  margin-top: auto; /* CRITICAL: Pushes button to bottom regardless of content */
+}
+
+.full-width-gray-btn {
+  display: block;
+  width: 100%;
+  background-color: #f4f7fa; /* Light background matching spot-btn-more */
+  color: #70798b; /* Muted slate color for text */
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 12px; /* Consistent rounded corners */
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease; /* Smooth transition for a professional feel */
+  margin-top: auto; /* Ensures alignment at the bottom */
+}
+
+/* --- Refined Hover State --- */
+.full-width-gray-btn:hover {
+  background-color: #e9eff5; /* Subtle darkening on hover */
+  color: var(--brand-navy); /* Text changes to brand navy */
+  transform: translateY(-2px); /* Slight lift for interaction feedback */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Very soft shadow */
+}
+
+/* --- Active State (Click) --- */
+.full-width-gray-btn:active {
+  transform: translateY(0);
+}
+
+/* Content Area */
+.package-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Fills remaining height */
+}
+
+/* Meta Data Badges */
+.info-badge-item {
+  font-size: 0.85rem;
+  color: #495057;
+  background-color: #fdfaf3;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-gold-accent {
+  color: #d4a017 !important;
+  margin-left: 6px;
+}
+
+/* Pricing */
+.price-val {
+  color: #d4a017;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+/* Button Alignment */
+.full-width-gray-btn {
+  display: block;
+  width: 100%;
+  background-color: #f1f3f5;
+  color: #6c757d;
+  text-align: center;
+  padding: 12px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  font-weight: 600;
+  margin-top: auto; /* Pushes button to bottom of flex container */
+}
+
+/* =========================================================
+FIX FOR DIRECTION & GRID (Final Step)
+========================================================= */
+
+/* 1. Force container to align horizontally from right to left */
+#tours-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important; /* Ensures starting from right in RTL */
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* 2. Ensure cards take one third (3 per row) on large screens */
+@media (min-width: 992px) {
+  .tour-card-item {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+
+/* 3. Style grey tags to secure icon placement */
+.spot-meta-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.spot-meta-tag i {
+  color: #d4a017;
+  margin-left: 8px; /* Icon spacing from text in RTL */
+}
+
+/* 4. Align text inside card */
+.spot-card-content {
+  text-align: right !important;
+}
+
+/* ==========================================================================
+CRITICAL FIX: TOURS GRID (3 CARDS ROW & PROPER DIRECTIONS)
+PLACE THIS AT THE VERY END OF YOUR style.css FILE
+========================================================================== */
+
+/* 1. Force the grid to stay horizontal and wrap cards */
+#tours-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  flex-direction: row !important; /* Proper RTL horizontal flow */
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* 2. Control card width: Exactly 3 cards per row on large screens */
+@media (min-width: 992px) {
+  #tours-grid .tour-card-item {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+    padding: 12px !important; /* Spacing between cards */
+  }
+}
+
+/* 3. Fix Image Size: Prevent images from growing too large */
+.spot-img-box {
+  height: 220px !important; /* Fixed height for consistency */
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.spot-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; /* Ensures the image fits without distortion */
+}
+
+/* 4. Direction Fix: Right side (Location/Category) | Left side (Price/Duration) */
+.spot-meta-tag {
+  background-color: #f3f6f9;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+}
+
+.spot-meta-tag i {
+  color: var(--brand-gold);
+  margin-left: 8px; /* Icon on the right of text for RTL */
+}
+
+/* Force Price and Duration text to align to the far left */
+.spot-duration-text,
+.spot-price-text {
+  text-align: left !important;
+  flex-grow: 1;
+}
+
+/* 5. Equal Height Card Container */
+.spot-tour-card {
+  background-color: #ffffff;
+  border-radius: 20px !important;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.spot-btn-more {
+  margin-top: auto; /* Keeps button at the bottom */
+}
+
+/* =========================================================
+REFINED BUTTON STYLE (Matching Image 333.jpg)
+========================================================= */
+
+.spot-btn-more {
+  display: block;
+  width: 100%;
+  background-color: #f4f7fa; /* Very light gray/blue tint from design */
+  color: #70798b; /* Muted slate text color */
+  text-align: center;
+  padding: 12px 20px;
+  border-radius: 12px; /* Smooth rounded corners */
+  text-decoration: none !important;
+  font-weight: 700; /* Bold text for better visibility */
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  margin-top: auto; /* Ensures the button stays at the bottom */
+}
+
+/* Hover Effect for a Premium Feel */
+.spot-btn-more:hover {
+  background-color: #e9eff5; /* Slightly darker on hover */
+  color: var(--brand-navy); /* Text turns to brand navy */
+  transform: translateY(-2px); /* Subtle lift effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow on hover */
+}
+
+/* Active State for Click Feedback */
+.spot-btn-more:active {
+  transform: translateY(0);
+}
+
+.spot-tour-card {
+  /* Apply rounded borders to all 4 corners (top & bottom) */
+  border-radius: 25px !important;
+
+  /* Crucial: Prevents image or content from overflowing rounded corners */
+  overflow: hidden !important;
+
+  background-color: #ffffff;
+  border: 1px solid #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Ensures top image respects the curvature */
+.spot-img-box {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  overflow: hidden;
+}
+
+/* Ensures bottom button aligns with the curve if attached to the edge */
+.spot-btn-more {
+  border-bottom-left-radius: 20px; /* Slightly smaller than card for aesthetic appeal */
+  border-bottom-right-radius: 20px;
+  margin-top: auto;
+}
+
+/* =========================================================
+LOAD MORE BUTTON - DELUXE STYLING
+========================================================= */
+
+.btn-load-more {
+  background-color: #ffffff;
+  color: var(--brand-navy); /* */
+  border: 2px solid #eef1f4;
+  border-radius: 50px; /* Fully rounded pill shape */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Hover Effect: Background & Shadow */
+.btn-load-more:hover {
+  background-color: var(--brand-navy); /* */
+  color: #ffffff !important;
+  border-color: var(--brand-navy); /* */
+  box-shadow: 0 10px 20px rgba(27, 54, 81, 0.15);
+  transform: translateY(-3px);
+}
+
+/* Icon Animation: Bouncing Down */
+.btn-load-more i {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.btn-load-more:hover i {
+  animation: bounceDown 1s infinite;
+  color: var(--brand-gold); /* */
+}
+
+/* Keyframes for the Chevron Icon */
+@keyframes bounceDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Active State: Press effect */
+.btn-load-more:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(27, 54, 81, 0.1);
+}
+
+/* Subtle Glow behind the button */
+#load-more-container {
+  position: relative;
+  padding: 20px 0;
+}
+
+.spot-tour-title {
+  color: var(--brand-navy); /* */
+  font-size: 1.025rem !important; /* Reduced from 1.15rem to be ~2px smaller */
+  line-height: 1.5;
+  margin-bottom: 0.5rem; /* Matching mb-2 spacing */
+}
+
+.spot-tour-desc {
+  font-size: 0.7rem !important; /* Reduced from 0.82rem to be ~2px smaller */
+  line-height: 1.8;
+  color: #7e8590 !important; /* Maintaining the muted look */
+  text-align: justify;
+  margin-bottom: 1.5rem; /* Matching mb-4 spacing */
+}
+
+@media (min-width: 992px) {
+  #sightseeing-grid .tour-card-item {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+}
+
+/* Slightly enlarge image to fit new width in tours only */
+#sightseeing-grid .spot-img-box {
+  height: 260px !important;
+  width: 100% !important;
+  overflow: hidden;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.btn-filter-action {
+  background: var(--brand-gold); /* Using the brand gold from style.css */
+  color: #1b3651 !important; /* Navy text for high contrast */
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); /* Soft gold glow */
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Hover State --- */
+.btn-filter-action:hover {
+  background: #1b3651; /* Swaps to Navy on hover */
+  color: #ffffff !important; /* Text becomes white */
+  transform: translateY(-3px); /* Lifts up */
+  box-shadow: 0 8px 20px rgba(27, 54, 81, 0.25); /* Stronger navy shadow */
+}
+
+/* --- Active/Click State --- */
+.btn-filter-action:active {
+  transform: translateY(-1px) scale(0.98); /* Press effect */
+}
+
+/* --- Shiny Effect (Optional Overlay) --- */
+.btn-filter-action::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.btn-filter-action:hover::after {
+  left: 100%; /* Shimmer effect on hover */
+}
+
+/* =========================================================
+   CONTACT FORM STYLING
+   ========================================================= */
+
+.contact-form-wrapper {
+  border-radius: 24px;
+  border: 1px solid #f0f0f0;
+}
+
+.contact-header-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #fdf8eb; /* Very light gold background */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Inputs Styling */
+.custom-input {
+  background-color: #fafbfc; /* Very light matching grey color */
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+.custom-input::placeholder {
+  color: #adb5bd;
+  font-size: 0.85rem;
+}
+
+/* Focus Animations */
+.custom-input:focus {
+  background-color: #ffffff;
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px); /* Very subtle lift when typing */
+}
+
+/* Form Switch (Toggle) Gold Styling */
+.custom-switch:checked {
+  background-color: var(--brand-gold);
+  border-color: var(--brand-gold);
+}
+
+/* Custom Radio Buttons */
+.custom-radio:checked {
+  background-color: var(--brand-gold);
+  border-color: var(--brand-gold);
+}
+
+.custom-radio-group {
+  background-color: #fafbfc;
+  border: 1px solid #e1e5eb;
+  border-radius: 10px;
+}
+
+/* Golden Submit Button */
+.btn-submit-gold {
+  background-color: #dda53b; /* Gold matching the image */
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth flexible animation */
+  box-shadow: 0 6px 15px rgba(221, 165, 59, 0.3);
+}
+
+.btn-submit-gold:hover {
+  background-color: #c49132;
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(221, 165, 59, 0.4);
+}
+
+.btn-submit-gold:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.custom-date-input {
+  position: relative !important;
+  text-align: right !important; /* Force the date text to align right */
+  direction: rtl !important;
+  padding-left: 40px !important; /* Leave empty space on the left so the text doesn't overlap the icon */
+}
+
+/* Pull the calendar icon and fix it to the left (for WebKit browsers like Chrome and Edge) */
+.custom-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 15px; /* Fix the icon 15px away from the left edge */
+  top: 50%;
+  transform: translateY(-50%); /* Perfectly center the icon vertically */
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  opacity: 0.6; /* Give the icon a subtle color */
+  transition: opacity 0.3s ease;
+}
+
+/* Highlight the icon on hover */
+.custom-date-input::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.custom-number-input {
+  direction: rtl !important;
+  text-align: right !important; /* Force text and placeholder to align right */
+}
+
+/* Control increment/decrement arrows (Spin Buttons) for WebKit browsers */
+.custom-number-input::-webkit-inner-spin-button,
+.custom-number-input::-webkit-outer-spin-button {
+  opacity: 1; /* Keep arrows always visible for ease of use */
+  margin-right: auto !important; /* Push arrows to the far left */
+  margin-left: 0 !important;
+  cursor: pointer;
+}
+
+/* =========================================================
+   FLATPICKR CALENDAR - CUSTOM BRAND STYLING
+   ========================================================= */
+
+/* Make the calendar fully RTL */
+.flatpickr-calendar {
+  direction: rtl !important;
+  font-family: "Cairo", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(27, 54, 81, 0.15) !important;
+  border: none !important;
+  padding-bottom: 10px;
+}
+
+/* Color the header (months and years) with Navy Blue */
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-weekdays {
+  background-color: #1b3651 !important;
+  color: #ffffff !important;
+  fill: #ffffff !important; /* Arrows color */
+}
+
+/* Rounded corners for the header background */
+.flatpickr-months {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* Weekday names (Sun, Mon...) in Gold */
+span.flatpickr-weekday {
+  color: #dda53b !important;
+  font-weight: 700;
+}
+
+/* Highlight selected dates in Gold */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected.inRange,
+.flatpickr-day.startRange.inRange,
+.flatpickr-day.endRange.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.startRange.prevMonthDay,
+.flatpickr-day.endRange.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay,
+.flatpickr-day.startRange.nextMonthDay,
+.flatpickr-day.endRange.nextMonthDay {
+  background: #dda53b !important;
+  border-color: #dda53b !important;
+  color: #fff !important;
+}
+
+/* Hover effect on regular days */
+.flatpickr-day:hover {
+  background: #fdf8eb !important; /* Very light gold */
+  border-color: #fdf8eb !important;
+  color: #1b3651 !important;
+}
+
+/* Month dropdown styling, custom left arrow, and reduced font size */
+.flatpickr-current-month .flatpickr-monthDropdown-months {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6l4 4 4-4'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: left 4px center !important;
+  background-size: 14px 14px !important;
+  padding-left: 20px !important;
+  padding-right: 5px !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+}
+
+/* Change custom arrow to Gold on hover */
+.flatpickr-current-month .flatpickr-monthDropdown-months:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23dda53b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 6l4 4 4-4'/%3E%3C/svg%3E") !important;
+}
+
+/* Style the options inside the month dropdown */
+.flatpickr-current-month
+  .flatpickr-monthDropdown-months
+  .flatpickr-monthDropdown-month {
+  font-size: 0.9rem !important;
+  background-color: #1b3651 !important;
+  color: #ffffff !important;
+}
+
+/* Resize year font to match the month, move text right, arrows left */
+.flatpickr-current-month input.cur-year {
+  font-size: 0.9rem !important;
+  padding-left: 20px !important; /* Space for the arrows */
+  padding-right: 5px !important;
+  text-align: right !important; /* Align numbers to the right */
+}
+
+/* Show year arrows and move them to the far left */
+.flatpickr-current-month .numInputWrapper span.arrowUp,
+.flatpickr-current-month .numInputWrapper span.arrowDown {
+  display: block !important;
+  left: 0 !important;
+  right: auto !important;
+}
+
+/* Color year arrows (White by default, Gold on hover) */
+.flatpickr-current-month .numInputWrapper span.arrowUp:after {
+  border-bottom-color: #ffffff !important;
+}
+.flatpickr-current-month .numInputWrapper span.arrowDown:after {
+  border-top-color: #ffffff !important;
+}
+.flatpickr-current-month .numInputWrapper span:hover.arrowUp:after {
+  border-bottom-color: #dda53b !important;
+}
+.flatpickr-current-month .numInputWrapper span:hover.arrowDown:after {
+  border-top-color: #dda53b !important;
+}
+
+/* Elegant style for disabled (past) days with strikethrough */
+span.flatpickr-day.flatpickr-disabled,
+span.flatpickr-day.flatpickr-disabled:hover {
+  color: #adb5bd !important;
+  background: transparent !important;
+  opacity: 0.4 !important;
+  cursor: not-allowed !important;
+  border-color: transparent !important;
+  text-decoration: line-through;
+}
+
+/* Today's date style (Circle with gold border and light background) */
+span.flatpickr-day.today {
+  border: 2px solid #dda53b !important;
+  background-color: #fdf8eb !important;
+  color: #1b3651 !important;
+  font-weight: 800 !important;
+  border-radius: 50% !important;
+}
+
+/* Hover effect on today's date */
+span.flatpickr-day.today:hover {
+  background-color: #dda53b !important;
+  color: #ffffff !important;
+}
+
+/* Selected today's date (Navy Blue) */
+span.flatpickr-day.today.selected,
+span.flatpickr-day.today.selected:hover {
+  background-color: #1b3651 !important;
+  border-color: #1b3651 !important;
+  color: #ffffff !important;
+}
+
+/* =========================================================
+   THE "DANCING" GOLD SUBMIT BUTTON
+   ========================================================= */
+
+/* 1. Base Styling (Elegance & Luxury) */
+.btn-submit-gold.btn-dancing {
+  /* Luxurious gold gradient instead of a solid color */
+  background: linear-gradient(45deg, #dda53b, #f1c40f);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px !important; /* Fully rounded edges for a smoother look */
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  /* Glowing gold shadow */
+  box-shadow:
+    0 8px 20px rgba(221, 165, 59, 0.4),
+    inset 0 2px 2px rgba(255, 255, 255, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Very bouncy and smooth transition */
+
+  /* Apply dancing (pulsing) animation */
+  animation: goldenPulse 2s infinite ease-in-out;
+}
+
+/* 2. Hover Effect */
+.btn-submit-gold.btn-dancing:hover {
+  /* Reverse the gradient to give a sense of movement */
+  background: linear-gradient(45deg, #f1c40f, #dda53b);
+  transform: translateY(-5px) scale(1.02); /* Moves up and scales up slightly */
+  /* Increase shadow glow */
+  box-shadow:
+    0 15px 30px rgba(221, 165, 59, 0.6),
+    inset 0 2px 2px rgba(255, 255, 255, 0.6);
+  /* Pause the pulse animation on hover to focus on the flying icon */
+  animation-play-state: paused;
+}
+
+/* Active (Click) Effect */
+.btn-submit-gold.btn-dancing:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 15px rgba(221, 165, 59, 0.5);
+}
+
+/* 3. Icon Styling and Custom Movement */
+.dancing-icon {
+  transition: transform 0.4s ease;
+  display: inline-block;
+}
+
+/* Make the icon "fly" up and to the right when hovering over the button */
+.btn-submit-gold.btn-dancing:hover .dancing-icon {
+  transform: translate(5px, -5px) rotate(-10deg) scale(1.2);
+}
+
+/* 4. Define the "Dancing" (Golden Pulse) Animation */
+@keyframes goldenPulse {
+  0% {
+    box-shadow: 0 8px 20px rgba(221, 165, 59, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    /* Shadow expands and button scales up slightly in the middle of the animation */
+    box-shadow: 0 15px 35px rgba(221, 165, 59, 0.7);
+    transform: scale(1.03);
+  }
+  100% {
+    box-shadow: 0 8px 20px rgba(221, 165, 59, 0.4);
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   CUSTOM LUXURY SCROLLBAR - NOQAT BRANDING
+   ========================================================= */
+
+/* 1. Style the entire scrollbar width */
+::-webkit-scrollbar {
+  width: 6px; /* Slim and elegant vertical scrollbar */
+  height: 6px; /* Slim horizontal scrollbar */
+}
+
+/* 2. Style the scrollbar track (The background) */
+::-webkit-scrollbar-track {
+  background: #f8f9fa; /* Very light grey to keep the focus on content */
+  border-radius: 10px;
+}
+
+/* 3. Style the scrollbar thumb (The draggable part) */
+::-webkit-scrollbar-thumb {
+  /* Brand Gold Gradient for a premium feel */
+  background: linear-gradient(to bottom, #dda53b, #c49132);
+  border-radius: 10px; /* Fully rounded "pill" shape */
+  transition: all 0.3s ease;
+}
+
+/* 4. Style the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* Switch to Brand Navy on hover for better interaction feedback */
+  background: #1b3651;
+  cursor: pointer;
+}
+
+/* For Firefox (Standard support) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #dda53b #f1f1f1;
+}
+
+/* =========================================================
+   MASTERPIECE SCROLL TOP STYLE (English Comments)
+   ========================================================= */
+
+.luxury-scroll-top {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 60px;
+  height: 60px;
+  z-index: 10000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+
+  /* Initial state (Hidden) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px) scale(0.5) rotate(-180deg);
+  transition: all 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* Shown State: Bounce and Rotate into place */
+.luxury-scroll-top.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1) rotate(0deg);
+}
+
+/* Glowing Aura behind the button */
+.button-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(221, 165, 59, 0.4) 0%,
+    transparent 70%
+  );
+  z-index: -1;
+  animation: glowPulse 2s infinite;
+}
+
+/* Progress Ring Customization */
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.35s;
+  transform-origin: 50% 50%;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 5px rgba(221, 165, 59, 0.5));
+}
+
+/* Icon Box Styling */
+.icon-box {
+  font-size: 1.6rem;
+  color: #1b3651; /* Navy Brand */
+  display: flex;
+  transition: all 0.4s ease;
+}
+
+/* Hover Delights */
+.luxury-scroll-top:hover {
+  background: #1b3651; /* Swaps to Navy */
+  border-color: #dda53b;
+  box-shadow: 0 15px 35px rgba(27, 54, 81, 0.4);
+}
+
+.luxury-scroll-top:hover .icon-box {
+  color: #dda53b; /* Turns Gold */
+  transform: translateY(-5px); /* Floats up */
+}
+
+/* Keyframes for the luxury glow */
+@keyframes glowPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* =========================================================
+   FIXED: IMAGE SHINE & ZOOM (SQUASHED IMAGE FIX)
+   ========================================================= */
+
+/* 1. The Container: Fixed height and inherited radius */
+.img-shine-container {
+  position: relative;
+  overflow: hidden;
+  height: 250px; /* Fixed height for all cards to look uniform */
+  width: 100%;
+  cursor: pointer;
+  /* Smart radius inheritance from the parent card */
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* 2. The Image: Object-fit cover is the key to prevent stretching */
+.img-shine-container .dest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image fills the space without distortion */
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: block;
+}
+
+/* 3. The Golden Shine Overlay */
+.img-shine-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(221, 165, 59, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  z-index: 2;
+  pointer-events: none; /* Allows clicks to pass through to the image */
+}
+
+/* 4. Hover Interactions */
+.img-shine-container:hover .dest-img {
+  transform: scale(1.1); /* Subtle zoom-in */
+}
+
+.img-shine-container:hover::after {
+  left: 150%;
+  transition: all 0.7s ease-in-out;
+}
+
+/* =========================================================
+   ULTIMATE 3D HOLOGRAPHIC TILT (English Comments)
+   ========================================================= */
+
+.tilt-container {
+  perspective: 1500px;
+}
+
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+  background: #fff;
+  overflow: hidden; /* To clip the glare */
+  will-change: transform;
+}
+
+/* The Secret Ingredient: The Dynamic Glare */
+.card-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at var(--glare-x) var(--glare-y),
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+}
+
+.tilt-card:hover .card-glare {
+  opacity: 1;
+}
+
+/* Layered Parallax Content */
+.tilt-card .img-shine-container {
+  transform: translateZ(30px); /* Image sits deep */
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.tilt-card .card-body {
+  transform: translateZ(60px); /* Text floats higher */
+  transform-style: preserve-3d;
+}
+
+.tilt-card .card-title {
+  transform: translateZ(40px); /* Title pops out more */
+}
+
+.tilt-card .btn {
+  transform: translateZ(80px); /* Button is closest to the user */
+}
+
+/* =========================================================
+   THE "SONIC GLIDE" PLANE ANIMATION - PRO EDITION
+   ========================================================= */
+
+/* 1. Fixed Size Container with Perfect Centering */
+.icon-circle-large {
+  width: 80px !important; /* Perfect fixed size */
+  height: 80px !important; /* Perfect fixed size */
+  position: relative;
+  overflow: hidden; /* Clip overflow during animation */
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  background: #ffffff;
+  border: 2px solid #f8f9fa !important;
+}
+
+/* 2. Plane Icon Styling & Idle Animation */
+.plane-icon-header {
+  color: #1b3651; /* Navy */
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  will-change: transform;
+  /* Idle Animation: Subtle engine vibration */
+  animation: planeIdle 3s infinite ease-in-out;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 3. Hover Effects: The Sonic Blast */
+.icon-circle-large:hover {
+  border-color: #dda53b !important;
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(221, 165, 59, 0.15) !important;
+}
+
+.icon-circle-large:hover .plane-icon-header {
+  color: #dda53b !important;
+  /* Movement: Lean forward and blast */
+  animation: sonicBlast 0.7s forwards cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 4. The Jet Trail */
+.icon-circle-large::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* Hidden initially on the right */
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #dda53b);
+  opacity: 0;
+  transition: all 0.4s ease;
+  transform: translateY(-50%);
+}
+
+.icon-circle-large:hover::before {
+  opacity: 1;
+  right: 20%; /* Appears suddenly behind the plane */
+  width: 60px;
+}
+
+/* --- ANIMATIONS DEFINITIONS --- */
+
+/* Idle Movement: Like a plane waiting for takeoff */
+@keyframes planeIdle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-3px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(1px) rotate(-1deg);
+  }
+}
+
+/* Sonic Blast: Quick acceleration with elegant return */
+@keyframes sonicBlast {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    /* Preparing for blast: Lean back slightly */
+    transform: translate(-5px, 2px) scale(0.9) rotate(5deg);
+  }
+  60% {
+    /* The Sonic Blast: Shoots forward and scales up */
+    transform: translate(60px, -60px) scale(1.2) rotate(-15deg);
+    opacity: 0;
+  }
+  61% {
+    /* Instant Reset behind the scenes */
+    transform: translate(-30px, 30px) scale(0.8) rotate(-10deg);
+    opacity: 0;
+  }
+  100% {
+    /* Smooth return to center */
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   SUPPORT BUTTON - PULSE & GLOW EFFECT
+   ========================================================= */
+
+.btn-support {
+  background: linear-gradient(
+    135deg,
+    #1b3651 0%,
+    #244669 100%
+  ); /* Brand Navy */
+  color: #ffffff !important;
+  border: none;
+  border-radius: 15px;
+  padding: 16px 25px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(27, 54, 81, 0.15);
+}
+
+/* Icon Wrapper & Pulse */
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.online-indicator {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  background-color: #28a745; /* Green for Online */
+  border-radius: 50%;
+  border: 2px solid #1b3651;
+  animation: pulseStatus 2s infinite;
+}
+
+/* Secondary Icon (Hidden initially) */
+.secondary-icon {
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+}
+
+/* Hover Interaction */
+.btn-support:hover {
+  background: #dda53b; /* Brand Gold */
+  color: #1b3651 !important;
+  box-shadow: 0 15px 30px rgba(221, 165, 59, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-support:hover .secondary-icon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.btn-support:hover .bi-person-headset {
+  animation: headsetShake 0.5s ease-in-out;
+}
+
+/* --- Animations --- */
+
+/* Pulse for the green dot */
+@keyframes pulseStatus {
+  0% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+  }
+}
+
+/* Subtle shake for the headset icon */
+@keyframes headsetShake {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(15deg);
+  }
+}
+
+/* =========================================================
+   NOQAT NAVBAR STYLES (Glassmorphism, Hover, Dropdown)
+   ========================================================= */
+
+/* --- 1. Navbar Glassmorphism on Scroll --- */
+.noqat-navbar {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.noqat-navbar .container-fluid {
+  display: flex;
+  align-items: center; /* Vertical alignment for all elements (Logo, Links, Buttons) */
+}
+
+.noqat-navbar.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 15px 35px rgba(27, 54, 81, 0.08);
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.navbar-scrolled .main-logo {
+  height: 42px !important;
+}
+
+/* --- Responsive Logo Styling --- */
+.main-logo-responsive {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto; /* Allow auto scaling */
+  object-fit: contain;
+  transition: all 0.4s ease-in-out;
+}
+
+/* 1. Extra Large Screens & Laptops (Desktop) */
+@media (min-width: 1200px) {
+  .main-logo-responsive {
+    height: 80px; /* Majestic size for clear visibility */
+  }
+}
+
+/* 2. Standard Large Screens */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .main-logo-responsive {
+    height: 80px;
+  }
+}
+
+/* 3. Tablet Screens (Tablets) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .main-logo-responsive {
+    height: 70px;
+  }
+}
+
+/* 4. Mobile Screens (Mobile) */
+@media (max-width: 767px) {
+  .main-logo-responsive {
+    height: 70px; /* Slightly larger than before for clarity */
+  }
+}
+
+/* Light reflection effect for more clarity */
+.brand-hover:hover .main-logo-responsive {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 10px rgba(221, 165, 59, 0.3)); /* */
+}
+
+/* --- 2. Nav Links Hover Magic --- */
+.noqat-nav-links .nav-link {
+  position: relative;
+  color: #1b3651 !important;
+  font-weight: 600;
+  padding: 10px 15px !important;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.noqat-nav-links .nav-link i {
+  color: #dda53b;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* The Golden Underline */
+.noqat-nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: #dda53b;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.noqat-nav-links .nav-link:hover,
+.noqat-nav-links .nav-link.active {
+  color: #dda53b !important;
+}
+
+.noqat-nav-links .nav-link:hover::after,
+.noqat-nav-links .nav-link.active::after {
+  width: 80%;
+}
+
+.noqat-nav-links .nav-link:hover i {
+  transform: translateY(-3px);
+}
+
+/* --- 3. Dropdown Menu & Indicator --- */
+.custom-dropdown .dropdown-toggle::after {
+  display: none !important; /* Hide default bootstrap arrow */
+}
+
+.dropdown-indicator {
+  font-size: 0.8rem;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0.7;
+}
+
+.custom-dropdown:hover .dropdown-indicator {
+  transform: rotate(180deg);
+  opacity: 1;
+  color: #dda53b;
+}
+
+@media (min-width: 992px) {
+  .custom-dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  .custom-dropdown .dropdown-menu {
+    display: block;
+    opacity: 0;
+    transform: translateY(15px);
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    margin-top: 0;
+  }
+}
+
+.drop-menu-glass {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(27, 54, 81, 0.05) !important;
+  padding: 10px;
+}
+
+.drop-menu-glass .dropdown-item {
+  border-radius: 8px;
+  font-weight: 500;
+  color: #1b3651;
+  transition: all 0.3s ease;
+}
+
+.drop-menu-glass .dropdown-item:hover {
+  background: rgba(221, 165, 59, 0.1);
+  color: #dda53b;
+  transform: translateX(-5px); /* Slide left slightly */
+}
+
+/* --- 4. Language Toggle Button --- */
+.lang-toggle-btn {
+  background: #f8f9fa;
+  padding: 8px 16px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  width: 110px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.lang-toggle-btn:hover {
+  background: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: rgba(221, 165, 59, 0.3);
+}
+
+.lang-content {
+  animation: fadeInLang 0.3s ease-in-out;
+}
+
+@keyframes fadeInLang {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- 5. Contact CTA Button & Ringing Headset --- */
+.btn-gold-nav {
+  background: linear-gradient(135deg, #dda53b 0%, #c48c26 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  height: 40px;
+  box-shadow: 0 8px 20px rgba(221, 165, 59, 0.3);
+  transition: all 0.4s ease;
+}
+
+.btn-gold-nav:hover {
+  box-shadow: 0 12px 25px rgba(221, 165, 59, 0.4);
+  color: #fff;
+}
+
+.contact-animated-btn .ringing-icon {
+  transform-origin: center top;
+}
+
+.contact-animated-btn:hover .ringing-icon {
+  animation: headsetRing 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+}
+
+@keyframes headsetRing {
+  0% {
+    transform: rotate(0);
+  }
+  15% {
+    transform: rotate(15deg) scale(1.1);
+  }
+  30% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  45% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  60% {
+    transform: rotate(-5deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(2deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Magnetic Wrapper for the CTA */
+.magnetic-wrap {
+  display: inline-block;
+  position: relative;
+  padding: 10px;
+  margin: -10px;
+}
+
+/* =========================================================
+   DYNAMIC LIQUID PILL STYLING
+   ========================================================= */
+
+.noqat-lang-pill {
+  position: relative;
+  width: 140px;
+  height: 42px;
+  background: rgba(27, 54, 81, 0.05); /* Very light navy pill background */
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(27, 54, 81, 0.08);
+  padding: 4px; /* Space for inner bubble */
+  /* Box Shadow for depth */
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02);
+  user-select: none;
+}
+
+/* The moving glass bubble (The Slider) */
+.active-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px; /* Starts from right because the site is Arabic RTL */
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: #ffffff; /* Bubble color */
+  border-radius: 40px;
+  /* Light shadow with gold glow */
+  box-shadow:
+    0 4px 12px rgba(221, 165, 59, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+  /* The secret is here: Spring Bounce animation */
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+/* English toggle state ( Bubble moves to the left ) */
+.noqat-lang-pill.is-english .active-indicator {
+  /* In RTL, moving left means negative X axis */
+  transform: translateX(-100%);
+}
+
+/* Element formatting (Texts & Flags) */
+.lang-item {
+  flex: 1;
+  position: relative;
+  z-index: 2; /* To be above the bubble */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #1b3651;
+  opacity: 0.5; /* Faded if inactive */
+  transition: all 0.4s ease;
+}
+
+.lang-item img {
+  width: 18px;
+  border-radius: 2px;
+  transition: transform 0.4s ease;
+}
+
+/* Active element state */
+.lang-item.active {
+  opacity: 1;
+  color: #dda53b; /* Noqat Gold */
+}
+
+.lang-item.active img {
+  transform: scale(1.15); /* Slightly enlarge the active flag */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* Global Hover Interaction on the Pill */
+.noqat-lang-pill:hover {
+  background: rgba(27, 54, 81, 0.08);
+}
+/* --- Main Container --- */
+.noqat-lang-pill {
+  position: relative;
+  width: 170px;
+  height: 46px;
+  background: rgba(27, 54, 81, 0.04);
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid rgba(27, 54, 81, 0.08);
+  padding: 4px;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+
+/* --- The Indicator (Golden Bubble) --- */
+.active-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px; /* Default is Right (Arabic) */
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, #dda53b 0%, #c48c26 100%);
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(221, 165, 59, 0.35);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+/* --- Toggle Animation (When .is-english added) --- */
+.noqat-lang-pill.is-english .active-indicator {
+  transform: translateX(-100%); /* Moves left */
+}
+
+/* --- Inner Elements Styling --- */
+.lang-item {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #1b3651; /* Royal Navy */
+  opacity: 0.65;
+  transition: all 0.4s ease;
+}
+
+.lang-item img {
+  width: 20px;
+  border-radius: 3px;
+}
+
+/* --- Active State (Over the Golden Bubble) --- */
+.lang-item.active {
+  opacity: 1;
+  color: #ffffff !important; /* Pure White for Contrast */
+}
+
+/* =========================================================
+   KINETIC GLASS SERVICES STYLING
+   ========================================================= */
+
+.noqat-master-services {
+  perspective: 1500px;
+  background: transparent;
+}
+
+.kinetic-card {
+  position: relative;
+  height: 380px;
+  padding: 35px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+/* Glass Layer - Glassmorphism */
+.card-glass {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(27, 54, 81, 0.1);
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+  transition: all 0.6s ease;
+  z-index: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transform: translateZ(40px); /* Push content forward */
+}
+
+/* Floating Icon - Orb */
+.icon-orb {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  background: #ffffff;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #1b3651;
+  box-shadow: 0 10px 25px rgba(27, 54, 81, 0.05);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.title {
+  font-weight: 800;
+  color: #1b3651;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.desc {
+  color: #6c757d;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Show Action on Hover */
+.card-footer-action {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: all 0.5s ease;
+}
+
+.explore-text {
+  font-weight: 700;
+  color: #dda53b;
+  font-size: 0.85rem;
+}
+
+.arrow-circle {
+  width: 30px;
+  height: 30px;
+  background: #dda53b;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+/* --- Hover Interactions --- */
+
+.kinetic-card:hover {
+  transform: translateY(-10px);
+}
+
+.kinetic-card:hover .card-glass {
+  background: rgba(255, 255, 255, 1);
+  border-color: #dda53b;
+  box-shadow: 0 30px 60px rgba(27, 54, 81, 0.12);
+}
+
+.kinetic-card:hover .icon-orb {
+  background: #1b3651;
+  color: #dda53b;
+  transform: scale(1.1) rotate(-8deg) translateZ(20px);
+  box-shadow: 0 15px 30px rgba(221, 165, 59, 0.25);
+}
+
+.kinetic-card:hover .card-footer-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Golden Backlight Glow */
+.kinetic-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(221, 165, 59, 0.2) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  transition:
+    transform 0.7s ease,
+    opacity 0.7s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.kinetic-card:hover::before {
+  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1;
+}
+/* --- Cleaning & Unifying Cards --- */
+.noqat-unified-services {
+  perspective: 1000px;
+}
+
+.luxury-kinetic-card {
+  position: relative;
+  height: 320px;
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(27, 54, 81, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.card-glass {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.card-body-content {
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+/* Various Icons */
+.icon-orb {
+  width: 70px;
+  height: 70px;
+  background: rgba(221, 165, 59, 0.05);
+  color: #dda53b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.service-title {
+  font-weight: 800;
+  color: #1b3651;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.service-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+.view-btn {
+  margin-top: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #dda53b;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.4s;
+}
+
+/* --- Hover Interactions (The VIP Touch) --- */
+
+.luxury-kinetic-card:hover {
+  transform: translateY(-10px);
+  border-color: #dda53b;
+  box-shadow: 0 20px 40px rgba(27, 54, 81, 0.1);
+}
+
+.luxury-kinetic-card:hover .icon-orb {
+  background: #1b3651;
+  color: #dda53b;
+  transform: scale(1.1) rotate(-10deg);
+}
+
+.luxury-kinetic-card:hover .view-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* --- Input Wrapper (Same width as support button) --- */
+.newsletter-premium-box {
+  height: 60px; /* Matches Support Button Height */
+  border-radius: 15px;
+  border: 1px solid rgba(27, 54, 81, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s ease;
+}
+
+.newsletter-premium-box:focus-within {
+  border-color: #dda53b;
+  box-shadow: 0 15px 30px rgba(221, 165, 59, 0.15);
+}
+
+.news-input-field {
+  background: transparent;
+  font-weight: 600;
+  color: #1b3651;
+  padding-right: 15px;
+}
+
+/* --- Luxury Subscribe Button --- */
+.news-submit-btn {
+  background: linear-gradient(135deg, #1b3651 0%, #244669 100%);
+  color: #ffffff !important;
+  border: none;
+  border-radius: 12px;
+  height: 50px;
+  padding: 0 30px !important;
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.news-submit-btn:hover {
+  background: #dda53b;
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(221, 165, 59, 0.3);
+}
+
+/* --- Icon Animation (Crucial) --- */
+.fly-icon-parent {
+  display: inline-block; /* Required to enable animation */
+  transition: all 0.4s ease;
+  transform: scaleX(-1); /* Flip icon to the left in Arabic */
+}
+
+/* Slight icon vibration (Like an airplane engine) */
+.fly-icon {
+  display: inline-block;
+  animation: softEngine 3s infinite ease-in-out;
+}
+
+.news-submit-btn:hover .fly-icon-parent {
+  /* Jump forward (Left) & slightly up on Hover */
+  transform: scaleX(-1) translate(10px, -5px) rotate(-15deg);
+}
+
+@keyframes softEngine {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* =========================================================
+   ABOUT PAGE - SEPARATED SECTIONS STYLING
+   ========================================================= */
+
+.bg-light-gold {
+  background-color: #fcfaf5;
+}
+
+/* Watermarked Numbers in Background */
+.section-number {
+  position: absolute;
+  font-size: 10rem;
+  font-weight: 900;
+  color: rgba(221, 165, 59, 0.05); /* Very transparent gold */
+  top: -20px;
+  right: -20px;
+  z-index: -1;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Image & Frame Styles */
+.image-stack {
+  position: relative;
+  padding: 20px;
+}
+.image-glass-overlay {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 60%;
+  height: 60%;
+  background: rgba(221, 165, 59, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 30px;
+  z-index: -1;
+}
+
+.luxury-card-stack {
+  position: relative;
+}
+.gold-box {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: var(--brand-gold);
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* Excellence Icons */
+.feature-item-pro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: 0.3s;
+}
+.feature-item-pro:hover {
+  transform: translateX(-10px);
+  border-right: 4px solid var(--brand-gold);
+}
+.icon-wrap {
+  width: 50px;
+  height: 50px;
+  background: rgba(221, 165, 59, 0.1);
+  color: var(--brand-gold);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+/* Stats Dividers */
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.1);
+}
+/* --- Compact Timeline Styling --- */
+.timeline-compact-section {
+  background: #fff;
+  position: relative;
+}
+
+.compact-timeline-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Slim Track */
+.slim-path-base {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px; /* Much thinner */
+  background: #f0f0f0;
+  transform: translateX(-50%);
+}
+
+.slim-path-fill {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background: #dda53b;
+  box-shadow: 0 0 10px rgba(221, 165, 59, 0.4);
+  transition: height 0.3s ease-out;
+}
+
+/* Mini Cards */
+.node-box {
+  position: relative;
+  width: 50%;
+  margin-bottom: 30px; /* Reduce Vertical Space */
+  z-index: 2;
+}
+
+.node-box.right {
+  margin-right: auto;
+  padding-right: 40px;
+  text-align: right;
+}
+.node-box.left {
+  margin-left: auto;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.node-content-slim {
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 15px 20px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.node-box:hover .node-content-slim {
+  border-color: #dda53b;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.n-year {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #dda53b;
+  display: block;
+}
+
+.n-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Center Point */
+.node-dot {
+  position: absolute;
+  top: 20px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  z-index: 3;
+  transition: 0.3s;
+}
+
+.node-box.right .node-dot {
+  right: -6px;
+}
+.node-box.left .node-dot {
+  left: -6px;
+}
+
+.node-box.active .node-dot {
+  background: #dda53b;
+  border-color: #fff;
+  box-shadow: 0 0 10px #dda53b;
+  transform: scale(1.2);
+}
+
+/* Mobile Screens Compatibility */
+@media (max-width: 768px) {
+  .slim-path-base {
+    left: 20px;
+    transform: none;
+  }
+  .node-box {
+    width: 100%;
+    text-align: right !important;
+    padding: 0 0 20px 45px !important;
+  }
+  .node-box .node-dot {
+    left: 14px !important;
+    right: auto !important;
+  }
+}
+
+/* */
+body.stop-scrolling {
+  overflow: hidden !important;
+  /* Rely on JS to add padding-right to prevent jitter */
+}
+
+/* =========================================================
+   PERFECT STATISTICS SECTION (Fix Overlap & Missing Icons)
+   ========================================================= */
+
+.stats-row {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+
+/* Element Wrapper (Prevents overlapping) */
+.stats-item-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Permanent centering */
+  gap: 15px; /* Perfect safety distance between icon and text */
+  width: 100%;
+}
+
+/* Icon Box (Prevents browser from hiding it) */
+.stats-icon-box {
+  flex: 0 0 60px !important; /* Force browser to a fixed icon size */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats-icon-box svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Texts wrapper */
+.stats-text-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: right;
+}
+
+/* Numbers styling */
+.stat-number {
+  font-size: 2.2rem !important;
+  color: var(--brand-gold) !important;
+  line-height: 1;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Helper Texts */
+.stat-label {
+  line-height: 1.2;
+  font-size: 0.85rem !important;
+  color: var(--text-muted) !important;
+  white-space: nowrap !important; /* Prevents word breaks */
+}
+
+/* Dashed Divider */
+.stat-divider {
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .stat-divider::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    border-left: 2px dashed #e9ecef;
+  }
+  .col-md-4:last-child.stat-divider::after {
+    display: none;
+  }
+}
+/* =========================================================
+   BULLETPROOF STATISTICS DIVIDER
+   ========================================================= */
+@media (min-width: 768px) {
+  .stat-divider-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    border-left: 2px dashed #e9ecef;
+  }
+}
+
+.border-light {
+  --bs-border-opacity: 1;
+  /* Replaced default variable with 2 shades darker (#dee2e6) */
+  border-color: rgba(222, 226, 230, var(--bs-border-opacity)) !important;
+}
+
+/* =========================================================
+   MICRO-STELLAR SOCIALS - FOOTER OPTIMIZED
+  
+   ========================================================= */
+
+/* 1. The Container (Compact for Footer) */
+.stellar-social-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 20px !important; /* Elegant spacing */
+  width: 100% !important;
+  padding: 15px 0 !important; /* Drastically reduce vertical padding */
+  perspective: 800px;
+  direction: ltr !important;
+}
+
+/* 2. The Micro Moon (40px only) */
+.stellar-item {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 3. The Slim Orbit */
+.stellar-ring {
+  position: absolute;
+  inset: -4px; /* Very close orbit */
+  border: 1.5px dashed rgba(212, 163, 77, 0.3); /* Noqat Gold */
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* 4. The Mini Glass Core */
+.stellar-core {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(27, 54, 81, 0.08); /* Light Navy */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.stellar-core i {
+  font-size: 1.1rem; /* Clear & Elegant Icon */
+  color: #1b3651; /* Noqat Navy */
+  transition: all 0.3s ease;
+}
+
+/* 5. Tooltip Label (Appears on Demand) */
+.stellar-tag {
+  position: absolute;
+  bottom: -25px;
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--stellar-color);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 0.3s ease;
+}
+
+/* --- Micro Hover Effects --- */
+
+.stellar-item:hover {
+  transform: translateY(-5px); /* Very light lift */
+}
+
+.stellar-item:hover .stellar-ring {
+  border-color: var(--stellar-color);
+  inset: -8px;
+  opacity: 1;
+  animation: rotateOrbit 4s linear infinite;
+}
+
+.stellar-item:hover .stellar-core {
+  background: var(--stellar-color);
+  box-shadow: 0 0 15px var(--stellar-glow);
+  transform: rotateY(180deg); /* Half turn rotation for speed */
+}
+
+.stellar-item:hover i {
+  color: #ffffff !important;
+  transform: rotateY(-180deg); /* Correct icon direction */
+}
+
+.stellar-item:hover .stellar-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Compatibility (Slightly Smaller) */
+@media (max-width: 768px) {
+  .stellar-social-wrapper {
+    gap: 15px !important;
+  }
+  .stellar-item {
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px !important;
+  }
+}
+
+/* */
+
+/* 1. Section Background to Highlight White Card */
+.bg-light-gray {
+  background-color: #f4f7fa;
+}
+
+/* 2. Master Card (White Card Wrapper) */
+.contact-premium-wrapper {
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid #dee2e6; /* 2 Shades Darker as requested */
+  transition: all 0.4s ease;
+}
+
+/* 3. Internal Info Cards (Tiles) */
+.contact-info-tile {
+  background: #fafbfc;
+  border: 1px solid #f0f2f5;
+  border-radius: 20px;
+  padding: 20px;
+  transition: 0.3s ease;
+}
+
+.contact-info-tile:hover {
+  background: #ffffff;
+  border-color: var(--brand-gold);
+  box-shadow: 0 10px 25px rgba(212, 163, 77, 0.05);
+}
+
+/* 4. Brand Details & Cosmetics */
+.contact-badge {
+  background: rgba(212, 163, 77, 0.1);
+  color: var(--brand-gold);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.gold-line-accent {
+  width: 50px;
+  height: 3px;
+  background: var(--brand-gold);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* 5. Micro Stellar Sun/Moon Icons */
+.stellar-item.micro {
+  width: 45px !important;
+  height: 45px !important;
+  flex: 0 0 45px !important;
+}
+
+.stellar-item.micro .stellar-core i {
+  font-size: 1.15rem !important;
+}
+
+/* 6. Map & Cinematic Effects */
+.map-full-height {
+  min-height: 450px;
+  filter: grayscale(0.2) contrast(1.1);
+  transition: 0.5s;
+}
+
+.map-full-height:hover {
+  filter: grayscale(0);
+}
+
+/* 7. Mobile Enhancements */
+@media (max-width: 991px) {
+  .map-full-height {
+    min-height: 300px;
+  }
+  .contact-premium-wrapper {
+    border-radius: 20px;
+  }
+}
+
+/* */
+
+/* 1. Container Animation on Reveal */
+.search-box-animated {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #eaeaea; /* Your Original Hue */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 2. Hover Animation */
+.search-box-animated:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px rgba(27, 54, 81, 0.12);
+  border-color: var(--brand-gold);
+}
+
+/* 3. Search Icon Animation (Pulse) */
+.search-icon-pulse {
+  transition: all 0.4s ease;
+}
+
+.search-box-animated:focus-within .search-icon-pulse {
+  color: var(--brand-gold) !important;
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* 4. Glowing Search Button */
+.btn-navy-search-glow {
+  background-color: var(--brand-navy);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 14px 60px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.btn-navy-search-glow:hover {
+  background-color: var(--brand-gold);
+  box-shadow: 0 8px 20px rgba(212, 163, 77, 0.3);
+}
+
+/* Icon Animation inside the button on hover */
+.search-btn-icon {
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.btn-navy-search-glow:hover .search-btn-icon {
+  transform: translateX(-5px) translateY(-2px) rotate(-15deg);
+}
+
+/* 5. Dark Mode Support based on file requirement */
+[data-theme="dark"] .search-box-animated {
+  background: #111827 !important;
+  border-color: rgba(212, 163, 77, 0.2) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .search-input-premium {
+  color: #fff !important;
+}
+
+/* */
+
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Slightly increased for clarity */
+  background: transparent;
+  z-index: 10001; /* Higher than Nav, lower than Preloader */
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  /* Starts Navy and turns Gold smoothly */
+  background: linear-gradient(to left, var(--brand-gold), var(--brand-navy));
+  box-shadow: 0 0 10px rgba(212, 163, 77, 0.5);
+  transition: width 0.1s ease-out;
+}
+
+/* Stronger glow in Dark Mode */
+[data-theme="dark"] .scroll-progress-bar {
+  box-shadow: 0 0 15px rgba(212, 163, 77, 0.8);
+}
+
+/* Translated CSS Rule */
+
+.deluxe-calc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(27, 54, 81, 0.85); /* Navy Dimming for more Focus */
+  backdrop-filter: blur(15px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 120000;
+  padding: 20px;
+}
+
+.calc-glass-vault {
+  background: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ); /* Solid Background to prevent background image bleed */
+  width: 100%;
+  max-width: 420px;
+  border-radius: 35px;
+  padding: 10px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.3);
+  animation: zoomInCalc 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+[data-theme="dark"] .calc-glass-vault {
+  background: #111827;
+  border: 1px solid rgba(212, 163, 77, 0.2);
+}
+
+.calc-inner-border {
+  border: 1px dashed rgba(212, 163, 77, 0.3);
+  border-radius: 30px;
+  padding: 25px;
+}
+
+/* Header: Force button to far left */
+.calc-header-pro {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.close-btn-x {
+  background: none;
+  border: none;
+  font-size: 2.2rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  line-height: 1;
+  transition: 0.3s;
+}
+.close-btn-x:hover {
+  color: var(--brand-gold);
+  transform: scale(1.1);
+}
+
+.calc-main-title {
+  font-weight: 800;
+  color: var(--brand-navy);
+  text-align: center;
+  margin-bottom: 25px;
+}
+[data-theme="dark"] .calc-main-title {
+  color: #fff;
+}
+
+.input-vault-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.vault-input-wrapper {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+}
+
+.vault-input-wrapper:focus-within {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 4px rgba(212, 163, 77, 0.1);
+}
+
+[data-theme="dark"] .vault-input-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.vault-input-wrapper input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--brand-navy);
+  outline: none;
+}
+[data-theme="dark"] .vault-input-wrapper input {
+  color: #fff;
+}
+
+.icon-gold {
+  color: var(--brand-gold);
+  font-size: 1.2rem;
+}
+
+/* Visual Divider between inputs */
+.swap-visual-divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+}
+.dot-line {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+.icon-swap {
+  width: 40px;
+  height: 40px;
+  background: var(--brand-gold);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px;
+  box-shadow: 0 5px 15px rgba(212, 163, 77, 0.3);
+}
+
+/* --- Premium Select Dropdown Styling --- */
+.vault-select-wrapper {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.vault-select-wrapper:focus-within {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 4px rgba(212, 163, 77, 0.15);
+}
+
+[data-theme="dark"] .vault-select-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.premium-select {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 15px 20px 15px 45px; /* Left Padding for Arrow space */
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--brand-navy);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: right;
+  direction: rtl;
+}
+
+[data-theme="dark"] .premium-select {
+  color: #ffffff;
+}
+[data-theme="dark"] .premium-select option {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+.custom-select-arrow {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--brand-gold);
+  font-size: 1.2rem;
+  pointer-events: none;
+  transition: transform 0.3s ease;
+}
+
+.premium-select:focus + .custom-select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* --- Final Result Card --- */
+.premium-display-card {
+  background: linear-gradient(135deg, var(--brand-navy) 0%, #162c42 100%);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  color: #fff;
+  margin-top: 30px;
+  box-shadow: 0 15px 30px rgba(27, 54, 81, 0.3);
+}
+
+.label-tiny {
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  display: block;
+  margin-bottom: 5px;
+}
+.res-num {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--brand-gold);
+  line-height: 1;
+}
+.res-code {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  font-weight: 700;
+}
+
+@keyframes zoomInCalc {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Translated CSS Rule */
+.btn-calc-launcher-premium {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px; /* Very Smooth Edges */
+  /* Gradient giving a Luxurious & Clean impression */
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1.5px solid rgba(212, 163, 77, 0.4); /* Transparent Gold Border */
+  color: var(--brand-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Premium Bouncy Animation */
+  /* Elegant Gold Outer Shadow + White Inner Light Shadow */
+  box-shadow:
+    0 5px 15px rgba(212, 163, 77, 0.15),
+    inset 0 2px 5px rgba(255, 255, 255, 0.8);
+
+  /* --- Absolute Fix for Clicks inside 3D Card --- */
+  position: relative !important;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+  transform: translateZ(
+    100px
+  ); /* Do not delete this! It makes the button clickable */
+}
+
+/* Internal Icon Animation */
+.btn-calc-launcher-premium i {
+  transition: transform 0.4s ease;
+}
+
+/* Hover State */
+.btn-calc-launcher-premium:hover {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, #c48c26 100%);
+  color: #ffffff;
+  border-color: transparent; /* Hide border to allow Gold Gradient Space */
+  /* Lift and Scale Button up while keeping 3D perspective */
+  transform: translateZ(100px) translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 25px rgba(212, 163, 77, 0.35); /* Strong Gold Glow */
+}
+
+/* Lightly tilt Icon on Hover for interaction feedback */
+.btn-calc-launcher-premium:hover i {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* Active (Click) State */
+.btn-calc-launcher-premium:active {
+  transform: translateZ(100px) translateY(0) scale(0.95);
+  box-shadow: 0 5px 10px rgba(212, 163, 77, 0.2);
+}
+
+/* --- Dark Mode Support --- */
+[data-theme="dark"] .btn-calc-launcher-premium {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-color: rgba(212, 163, 77, 0.3);
+  color: var(--brand-gold);
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.5),
+    inset 0 2px 5px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .btn-calc-launcher-premium:hover {
+  background: linear-gradient(135deg, var(--brand-gold) 0%, #c48c26 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(212, 163, 77, 0.4);
+}

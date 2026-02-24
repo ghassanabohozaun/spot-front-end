@@ -1,16 +1,3 @@
-window.addEventListener("load", function () {
-  const preloader = document.getElementById("noqat-preloader");
-
-  setTimeout(() => {
-    if (preloader) {
-      preloader.classList.add("preloader-hidden");
-      document.body.style.overflow = "auto";
-    }
-  }, 1800); // 1.8s duration to show off the luxury movement
-});
-
-document.body.style.overflow = "hidden";
-
 /**
  * Scroll Reveal Logic using Intersection Observer
  */
@@ -249,17 +236,17 @@ function initLoadMore() {
   let gridSelector = "";
   let batchSize = 3;
 
-  // البحث عن شبكة الجولات السياحية بالاسم الجديد
+  // Search for the Tours grid with the new name
   if (document.getElementById("sightseeing-grid")) {
     gridSelector = "#sightseeing-grid";
-    batchSize = 2; // عرض كرتين في الضغطة
+    batchSize = 2; // Show two cards per click
   }
-  // البحث عن شبكة الرحلات
+  // Search for the Trips grid
   else if (document.getElementById("tours-grid")) {
     gridSelector = "#tours-grid";
-    batchSize = 3; // عرض 3 كروت في الضغطة
+    batchSize = 3; // Show 3 cards per click
   } else {
-    return; // لم يتم العثور على أي شبكة
+    return; // No grid found
   }
 
   const newBtn = loadMoreBtn.cloneNode(true);
@@ -308,29 +295,29 @@ function initTicketsLoadMoreSafe() {
   const ticketsGrid = document.getElementById("tickets-grid");
   const btnContainer = document.getElementById("load-more-tickets");
 
-  // إذا لم تكن الأزرار موجودة (مثلاً نحن في صفحة أخرى)، أوقف التنفيذ فوراً
+  // If buttons don't exist (e.g. on another page), stop execution immediately
   if (!btnTickets || !ticketsGrid) return;
 
-  // استخدام onclick المباشر لتجنب تكرار الأحداث وضمان عمله 100%
+  // Using direct onclick to prevent event duplication and ensure 100% functionality
   btnTickets.onclick = function (e) {
     e.preventDefault();
 
-    // نبحث فقط عن الكروت المخفية داخل شبكة التذاكر
+    // Only search for hidden cards inside the Tickets grid
     const hiddenTickets = ticketsGrid.querySelectorAll(
       ".ticket-card-item.d-none",
     );
-    const itemsToShow = 3; // عدد الكروت في كل ضغطة (صف كامل)
+    const itemsToShow = 3; // Number of cards per click (full row)
 
     for (let i = 0; i < itemsToShow; i++) {
       if (hiddenTickets[i]) {
-        // إزالة كلاس الإخفاء
+        // Remove hidden class
         hiddenTickets[i].classList.remove("d-none");
 
-        // تجهيز الكرت للحركة (يكون شفاف ونازل لتحت شوية)
+        // Prepare card for animation (transparent and slightly moved down)
         hiddenTickets[i].style.opacity = "0";
         hiddenTickets[i].style.transform = "translateY(20px)";
 
-        // تنفيذ الحركة بتأخير زمني بسيط بين كل كرت ليعطي شكل "متتالي"
+        // Execute animation with slight delay between cards for a sequential effect
         setTimeout(() => {
           hiddenTickets[i].style.transition =
             "all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1)";
@@ -340,7 +327,7 @@ function initTicketsLoadMoreSafe() {
       }
     }
 
-    // إخفاء حاوية الزر تماماً إذا لم يعد هناك كروت مخفية
+    // Hide button container completely if there are no more hidden cards
     if (ticketsGrid.querySelectorAll(".ticket-card-item.d-none").length === 0) {
       if (btnContainer) {
         btnContainer.style.display = "none";
@@ -349,7 +336,7 @@ function initTicketsLoadMoreSafe() {
   };
 }
 
-// ضمان تشغيل السكريبت سواء تم تحميل الصفحة بالكامل أم ما زالت تحمل
+// Ensure script runs whether the page is fully loaded or still loading
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initTicketsLoadMoreSafe);
 } else {
@@ -366,38 +353,38 @@ document.addEventListener("DOMContentLoaded", function () {
   if (flightToggle && flightDetails) {
     flightToggle.addEventListener("change", function () {
       if (this.checked) {
-        // إظهار القسم
+        // Show section
         flightDetails.classList.remove("d-none");
         flightDetails.style.opacity = "0";
         flightDetails.style.transform = "translateY(-15px)";
 
-        // أنيميشن النزول والظهور
+        // Dropdown and reveal animation
         setTimeout(() => {
           flightDetails.style.transition = "all 0.5s ease";
           flightDetails.style.opacity = "1";
           flightDetails.style.transform = "translateY(0)";
         }, 50);
       } else {
-        // إخفاء القسم
+        // Hide section
         flightDetails.style.opacity = "0";
         flightDetails.style.transform = "translateY(-15px)";
 
         setTimeout(() => {
           flightDetails.classList.add("d-none");
-        }, 300); // انتظار انتهاء الأنيميشن قبل الإخفاء الفعلي
+        }, 300); // Wait for animation to finish before actual hiding
       }
     });
   }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  // تفعيل Flatpickr لحقول التاريخ
+  // Enable Flatpickr for date fields
   flatpickr(".custom-flatpickr", {
-    locale: "ar", // تفعيل اللغة العربية
-    disableMobile: true, // إجبار الجوالات على استخدام هذا التصميم الأنيق بدلاً من تصميم الجوال الافتراضي
-    minDate: "today", // منع اختيار تواريخ سابقة لليوم
-    dateFormat: "Y-m-d", // صيغة التاريخ المتوافقة مع قواعد البيانات
-    animate: true, // حركة ظهور ناعمة
+    locale: "ar", // Enable localization (ar/en handled actively if preferred)
+    disableMobile: true, // Force mobile devices to use this elegant layout instead of default
+    minDate: "today", // Prevent selecting past dates
+    dateFormat: "Y-m-d", // Database-compatible date format
+    animate: true, // Soft reveal movement
   });
 });
 
@@ -518,60 +505,6 @@ const initSupportMagnetic = () => {
 document.addEventListener("DOMContentLoaded", initSupportMagnetic);
 
 /**
- * CINEMATIC PHYSICS ENGINE
- */
-const initCinemaSquare = () => {
-  const items = document.querySelectorAll(".cinema-box");
-
-  items.forEach((item) => {
-    const color = item.getAttribute("data-color");
-    const aurora = item.querySelector(".aurora-bg");
-    const link = item.querySelector(".icon-link");
-    const trace = item.querySelector(".border-trace");
-
-    item.style.setProperty("--brand-glow", color);
-    item.style.setProperty("--brand-glow-alpha", color + "44");
-
-    let tX = 0,
-      tY = 0;
-    let cX = 0,
-      cY = 0;
-
-    const lerp = (s, e, f) => s + (e - s) * f;
-
-    const update = () => {
-      cX = lerp(cX, tX, 0.08);
-      cY = lerp(cY, tY, 0.08);
-
-      // تحريك موضع الشفق
-      aurora.style.setProperty("--m-x", `${50 + cX * 2}%`);
-      aurora.style.setProperty("--m-y", `${50 + cY * 2}%`);
-
-      // تحريك العناصر بفيزياء مختلفة للعمق
-      link.style.transform = `translate(${cX}px, ${cY}px) translateZ(40px)`;
-      trace.style.transform = `translate(${cX * 0.4}px, ${cY * 0.4}px) rotate(${cX * 0.5}deg)`;
-
-      requestAnimationFrame(update);
-    };
-
-    item.addEventListener("mousemove", (e) => {
-      const r = item.getBoundingClientRect();
-      tX = (e.clientX - r.left - r.width / 2) * 0.5;
-      tY = (e.clientY - r.top - r.height / 2) * 0.5;
-    });
-
-    item.addEventListener("mouseleave", () => {
-      tX = 0;
-      tY = 0;
-    });
-
-    update();
-  });
-};
-
-document.addEventListener("DOMContentLoaded", initCinemaSquare);
-
-/**
  * NOQAT NAVBAR LOGIC (Scroll, Language, Magnetic CTA)
  */
 document.addEventListener("DOMContentLoaded", () => {
@@ -636,13 +569,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (langPill) {
     langPill.addEventListener("click", function () {
-      // 1. تبديل كلاس الحركة على الحاوية
+      // 1. Toggle animation class on container
       this.classList.toggle("is-english");
 
       const arItem = this.querySelector(".ar-item");
       const enItem = this.querySelector(".en-item");
 
-      // 2. تحديث كلاس active بناءً على وجود is-english
+      // 2. Update active class based on the presence of is-english
       if (this.classList.contains("is-english")) {
         arItem.classList.remove("active");
         enItem.classList.add("active");
@@ -663,7 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
 
-      // حساب زوايا الميل الفيزيائي
+      // Calculate physical tilt angles
       const rotateY = ((x - rect.width / 2) / rect.width) * 15;
       const rotateX = ((y - rect.height / 2) / rect.height) * -15;
 
@@ -671,7 +604,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     card.addEventListener("mouseleave", () => {
-      // العودة لنقطة الصفر بنعومة
+      // Return to zero-point smoothly
       card.style.transform = `rotateX(0deg) rotateY(0deg) translateY(0px)`;
     });
   });
@@ -686,7 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
 
-      // ميلان خفيف جداً
+      // Very light tilt
       card.style.transform = `translateY(-10px) rotateX(${-y * 0.05}deg) rotateY(${x * 0.05}deg)`;
     });
 
@@ -704,24 +637,24 @@ document.addEventListener("DOMContentLoaded", () => {
     subBtn.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // 1. الأيقونة "تطير" لليسار وتختفي
+      // 1. The icon "flies" to the left and disappears
       flyWrapper.style.transition =
         "all 0.8s cubic-bezier(0.47, 0, 0.745, 0.715)";
       flyWrapper.style.transform =
         "scaleX(-1) translate(200px, -100px) scale(0)";
       flyWrapper.style.opacity = "0";
 
-      // 2. النص يتغير بنعومة
+      // 2. The text changes smoothly
       btnSpan.style.transition = "0.3s";
       btnSpan.style.opacity = "0";
 
       setTimeout(() => {
-        btnSpan.innerText = "تم الاشتراك!";
+        btnSpan.innerText = "Subscribed!";
         btnSpan.style.opacity = "1";
-        subBtn.style.background = "#28a745"; // أخضر للنجاح
+        subBtn.style.background = "#28a745"; // Green for success
       }, 300);
 
-      // 3. إعادة الضبط بعد 3 ثواني
+      // 3. Reset after 3 seconds
       setTimeout(() => {
         flyWrapper.style.transition = "none";
         flyWrapper.style.transform =
@@ -732,10 +665,211 @@ document.addEventListener("DOMContentLoaded", () => {
             "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
           flyWrapper.style.transform = "scaleX(-1) translate(0, 0) scale(1)";
           flyWrapper.style.opacity = "1";
-          btnSpan.innerText = "اشتراك";
+          btnSpan.innerText = "Subscribe";
           subBtn.style.background = "";
         }, 50);
       }, 3500);
     });
+  }
+});
+
+/**
+ * REFINED COMPACT TIMELINE ENGINE
+ */
+const initCompactTimeline = () => {
+  const pathFill = document.querySelector(".slim-path-fill");
+  const nodes = document.querySelectorAll(".node-box");
+  const wrapper = document.querySelector(".compact-timeline-wrapper");
+
+  if (!pathFill || !wrapper) return;
+
+  const onScroll = () => {
+    const triggerPoint = window.innerHeight * 0.8;
+    const rect = wrapper.getBoundingClientRect();
+
+    let progress = triggerPoint - rect.top;
+    let height = (progress / rect.height) * 100;
+
+    height = Math.min(Math.max(height, 0), 100);
+    pathFill.style.height = `${height}%`;
+
+    nodes.forEach((node) => {
+      const nodePos = node.getBoundingClientRect().top;
+      if (nodePos < triggerPoint) {
+        node.classList.add("active");
+      } else {
+        node.classList.remove("active");
+      }
+    });
+  };
+
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+};
+
+document.addEventListener("DOMContentLoaded", initCompactTimeline);
+
+/**
+ * NOQAT SMART SCROLL RESTORATION
+ *
+ */
+
+// 1. The secret: Force the browser to stop auto-scroll restoration
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  // 2. Return scroll to the top immediately before the preloader disappears
+  window.scrollTo(0, 0);
+
+  const preloader = document.getElementById("noqat-preloader");
+  const body = document.body;
+
+  window.addEventListener("load", () => {
+    // Extra confirmation after elements properly loaded
+    window.scrollTo(0, 0);
+
+    if (preloader) {
+      // Activate cinematic animation
+      setTimeout(() => {
+        preloader.classList.add("ready");
+
+        setTimeout(() => {
+          preloader.style.transition = "all 1s cubic-bezier(1, 0, 0, 1)";
+          preloader.style.opacity = "0";
+          preloader.style.transform = "translateY(-100%)";
+
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 1000);
+        }, 1500);
+      }, 2500);
+    }
+  });
+});
+
+/* */
+document.querySelectorAll(".stellar-item").forEach((item) => {
+  item.addEventListener("mouseenter", () => {
+    const ring = item.querySelector(".stellar-ring");
+    ring.style.animation = "rotateOrbit 3s linear infinite";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    const ring = item.querySelector(".stellar-ring");
+    ring.style.animation = "none";
+  });
+});
+
+/* */
+document.addEventListener("scroll", () => {
+  const progressBar = document.getElementById("scroll-progress-bar");
+  const totalHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const progress = (window.pageYOffset / totalHeight) * 100;
+
+  if (progressBar) {
+    progressBar.style.width = `${progress}%`;
+
+    // Pulse effect when reaching the bottom (100%)
+    if (progress > 98) {
+      progressBar.style.boxShadow = "0 0 25px rgba(212, 163, 77, 1)";
+    } else {
+      progressBar.style.boxShadow = "0 0 15px rgba(212, 163, 77, 0.6)";
+    }
+  }
+});
+
+/* =========================================================
+   Currency Converter Logic (SAR BASE - API LIVE EDITION)
+   ========================================================= */
+
+let liveExchangeRates = {};
+
+// Backup prices based on approximately 1 SAR equating to:
+const fallbackRates = {
+  SAR: 1.0,
+  AED: 0.98,
+  USD: 0.27,
+  EUR: 0.25,
+  JOD: 0.19,
+  ILS: 0.96,
+  EGP: 13.1,
+};
+
+// 1. Fetch live rates
+async function fetchLiveRates() {
+  try {
+    const response = await fetch("https://open.er-api.com/v6/latest/SAR");
+    const data = await response.json();
+
+    if (data && data.rates) {
+      liveExchangeRates = data.rates;
+      console.log("Exchange rates updated successfully! (Base: SAR)");
+    } else {
+      throw new Error("Invalid API Data");
+    }
+  } catch (error) {
+    console.warn("Failed to connect to API, backup rates will be used.", error);
+    liveExchangeRates = fallbackRates;
+  }
+}
+
+// Fetch rates immediately upon opening site
+document.addEventListener("DOMContentLoaded", fetchLiveRates);
+
+// 2. Control Panel Context
+function toggleCurrencyModal() {
+  const modal = document.getElementById("currencyModal");
+  if (modal) {
+    modal.style.display = modal.style.display === "flex" ? "none" : "flex";
+  }
+}
+
+function openDeluxeCalculator(amount) {
+  const inputField = document.getElementById("baseAmount");
+  if (inputField) inputField.value = amount;
+
+  if (Object.keys(liveExchangeRates).length === 0) {
+    liveExchangeRates = fallbackRates;
+  }
+
+  toggleCurrencyModal();
+  convertCurrency();
+}
+
+// 3. Direct Conversion Process
+function convertCurrency() {
+  const baseInput = document.getElementById("baseAmount").value;
+  const base = parseFloat(baseInput) || 0;
+
+  const select = document.getElementById("targetCurrency");
+  const targetCurrencyCode = select.value;
+
+  // Get rate from API or Backup
+  const rate =
+    liveExchangeRates[targetCurrencyCode] ||
+    fallbackRates[targetCurrencyCode] ||
+    1;
+
+  const total = base * rate;
+
+  const resultDisplay = document.getElementById("convertedResult");
+  if (resultDisplay) {
+    resultDisplay.innerText = total.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
+  document.getElementById("currencyCode").innerText = targetCurrencyCode;
+}
+
+// Close modal when clicking outside
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("currencyModal");
+  if (event.target === modal) {
+    toggleCurrencyModal();
   }
 });
